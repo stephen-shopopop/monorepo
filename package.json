@@ -48,7 +48,6 @@
     ],
     "ignore": [
       "dist",
-      "docs",
       "jest.config.ts",
       "commitlint.config.js"
     ]
