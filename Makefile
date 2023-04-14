@@ -21,6 +21,9 @@ install: ## Install node version
 	@. $(NVM_DIR)/nvm.sh && nvm install $(NODE)
 	@make run CMD="npm install"
 
+git-hooks: ## Install git hooks
+	make run CMD="npx simple-git-hooks"
+
 ## Tasks
 ## ex: make task lint
 task: ## Run task
