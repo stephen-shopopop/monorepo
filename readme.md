@@ -21,6 +21,12 @@ Example library usage
 1. npm run lint - Lint your code.
 2. npm run lint:fix - Lint & fix your code.
 
+## Install package
+
+```bash
+npm install <package> --workspace=<workspace>
+```
+
 ## Production
 
 ```bash

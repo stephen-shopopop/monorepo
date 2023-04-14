@@ -5,6 +5,9 @@ const readline = require('readline')
 const util = require('util')
 const fs = require('fs-extra')
 const packageJson = require('./package.json')
+const { Console } = require('console')
+
+const logger = new Console({ stdout: process.stdout, stderr: process.stderr })
 
 const rl = readline.createInterface({
   input: process.stdin,
@@ -104,11 +107,13 @@ describe('[index/hello] hello()', () => {
   pkg.description = ''
 
   await fs.writeJSON(`./packages/${packageName}/package.json`, pkg, { spaces: 2 })
+
+  logger.info(`\n npm install pino --workspace=${scopeName}/${packageName}`)
 }
 
 main()
   .then(() => process.exit())
   .catch((error) => {
-    console.warn(error)
+    logger.warn(error)
     process.exitCode(1)
   })
