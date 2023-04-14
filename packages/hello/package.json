@@ -19,5 +19,8 @@
   "bugs": {
     "url": "https://github.com/stephen-shopopop/{repository}/issues"
   },
-  "homepage": "https://github.com/stephen-shopopop/{repository}#readme"
+  "homepage": "https://github.com/stephen-shopopop/{repository}#readme",
+  "dependencies": {
+    "pino": "^8.11.0"
+  }
 }

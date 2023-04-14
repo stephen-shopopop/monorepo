@@ -1,5 +1,9 @@
+import pino from 'pino'
+
 export function hello (name: string): string {
   return 'hello ' + name
 }
 
-console.log(hello(' you'))
+const logger = pino()
+
+logger.warn(hello(' you'))

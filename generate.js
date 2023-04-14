@@ -108,7 +108,13 @@ describe('[index/hello] hello()', () => {
 
   await fs.writeJSON(`./packages/${packageName}/package.json`, pkg, { spaces: 2 })
 
-  logger.info(`\n npm install pino --workspace=${scopeName}/${packageName}`)
+  logger.info(`\n npm install pino --workspace=@${scopeName}/${packageName}`)
+
+  const cmdPkgs = `npm install pino --workspace=@${scopeName}/${packageName}`
+  execSync(cmdPkgs.toString(), {
+    cwd: __dirname,
+    stdio: 'inherit'
+  })
 }
 
 main()
