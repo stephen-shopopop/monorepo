@@ -69,7 +69,7 @@ Template nodejs typescript
 
 1. npm run start -  Start project
 2. npm run dev - Start project with ts-node (dev only)
-3. npm run compile - Build ts
+3. npm run build - Build ts
 `)
 
   // Generate index.ts
@@ -99,7 +99,7 @@ describe('[index/hello] hello()', () => {
   pkg.scripts = {
     start: 'node dist/index.js',
     dev: 'ts-node index.ts',
-    compile: 'rimraf dist/* && tsc -p tsconfig.pkg.json'
+    build: 'rimraf dist/* && tsc -p tsconfig.pkg.json'
   }
   pkg.description = ''
 

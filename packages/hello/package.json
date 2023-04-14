@@ -7,7 +7,7 @@
   "scripts": {
     "start": "node dist/index.js",
     "dev": "ts-node index.ts",
-    "compile": "rimraf dist/* && tsc -p tsconfig.pkg.json"
+    "build": "rimraf dist/* && tsc -p tsconfig.pkg.json"
   },
   "repository": {
     "type": "git",

@@ -14,7 +14,7 @@ export default {
     // cacheDirectory: "/private/var/folders/ht/z6p0tst1545dx30w0sln1kl80000gn/T/jest_dx",
   
     // Automatically clear mock calls, instances and results before every test
-    clearMocks: true,
+    // clearMocks: true,
   
     // Indicates whether the coverage information should be collected while executing the test
     collectCoverage: true,
@@ -91,10 +91,10 @@ export default {
     // modulePathIgnorePatterns: [],
   
     // Activates notifications for test results
-    // notify: false,
+    notify: true,
   
     // An enum that specifies notification mode. Requires { notify: true }
-    // notifyMode: "failure-change",
+    notifyMode: "change",
   
     // A preset that is used as a base for Jest's configuration
     preset: "ts-jest",
@@ -102,7 +102,19 @@ export default {
     // projects: undefined,
   
     // Use this configuration option to add custom reporters to Jest
-    // reporters: undefined,
+    reporters: [
+        'default',
+        [
+          '@jest-performance-reporter/core',
+          {
+            errorAfterMs: 1000,
+            warnAfterMs: 300,
+            logLevel: 'warn',
+            maxItems: 5,
+            jsonReportPath: 'test-reports/performance-report.json',
+          },
+        ],
+    ],
   
     // Automatically reset mock state before every test
     // resetMocks: false,
@@ -134,13 +146,13 @@ export default {
     setupFilesAfterEnv: [ "<rootDir>/.jest/setUpAfter.ts" ],
   
     // The number of seconds after which a test is considered as slow and reported as such in the results.
-    // slowTestThreshold: 5,
+    slowTestThreshold: 0.3,
   
     // A list of paths to snapshot serializer modules Jest should use for snapshot testing
     // snapshotSerializers: [],
   
     // The test environment that will be used for testing
-    // testEnvironment: "jest-environment-node",
+    testEnvironment: "node",
   
     // Options that will be passed to the testEnvironment
     // testEnvironmentOptions: {},
@@ -149,15 +161,12 @@ export default {
     // testLocationInResults: false,
   
     // The glob patterns Jest uses to detect test files
-    // testMatch: [
-    //   "**/__tests__/**/*.[jt]s?(x)",
-    //   "**/?(*.)+(spec|test).[tj]s?(x)"
-    // ],
+    testMatch: ['**/*.test.ts'],
   
     // An array of regexp pattern strings that are matched against all test paths, matched tests are skipped
-    // testPathIgnorePatterns: [
-    //   "/node_modules/"
-    // ],
+    testPathIgnorePatterns: [
+      "/node_modules/"
+    ],
   
     // The regexp pattern or array of patterns that Jest uses to detect test files
     // testRegex: [],
@@ -187,7 +196,7 @@ export default {
     // unmockedModulePathPatterns: undefined,
   
     // Indicates whether each individual test should be reported during the run
-    // verbose: undefined,
+    verbose: false,
   
     // An array of regexp patterns that are matched against all source file paths before re-running tests in watch mode
     // watchPathIgnorePatterns: [],
@@ -197,5 +206,9 @@ export default {
 
     moduleNameMapper: {
         '^@stephen-shopopop/(.*)$': '<rootDir>/packages/$1/'
-    }
+    },
+    watchPlugins: [
+        'jest-watch-typeahead/filename',
+        'jest-watch-typeahead/testname',
+      ],
   };

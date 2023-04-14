@@ -3,6 +3,7 @@ packages/*/dist
 
 # Artifact files
 dist/
+.turbo
 
 # Log files
 *.log
