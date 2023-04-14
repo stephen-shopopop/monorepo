@@ -1,7 +1,7 @@
 {
   "name": "@stephen-shopopop/logger",
   "version": "1.0.0",
-  "description": "wWork logger abstract",
+  "description": "Works logger",
   "private": true,
   "engines": {
     "node": ">=18.15.0",
@@ -34,7 +34,7 @@
     "maintenance": "find . -name 'node_modules' -type d -prune -exec rm -rf '{}' +"
   },
   "keywords": [
-    "standard"
+    "logger"
   ],
   "author": "tech-shopopop <tech@shopopop.com>",
   "license": "ISC",
