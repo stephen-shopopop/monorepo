@@ -9,6 +9,24 @@
 
 ## Description
 
+Isoler une dependance, simple comme bonjour
+
+## Analyses
+
+- ✅ facilite de mise en place
+- ✅ fonctionnelle
+- ✅ tests non necessaire (cela reviendrait a tester la dependance)
+- ⚠️ complexite pour eviter un couplage trop present avec la dependance
+- ⚠️ impossible d'injecter une logique applicative
+- ⚠️ la fonction doit etre dupliquée si le projet a besoin de plusieurs instances
+- ⛔️ Configuration dans la librairie
+- ⛔️ typage pas suffisament strict et ne reponds pas forcement aux besoins
+- ⛔️ bien que la librairie n'a pas besoin de test, sont usage peut necessite des tests car le typage n'est pas assez strict. ex: logger.warn(...any[])
+- ⛔️ attention a l'usage de methodes specifiques de la dependance
+
+__nota:__ Dans certain cas cette methode est a priviligie, si la dependance ne possede qu´une methode (ou qu´une seul methode soit necessaire au projet) et sans configuration necessaire car elle apporte la simplicite et la facilite de mise en place.
+
+
 ## Contributing
 
 1. npm run start -  Start project
