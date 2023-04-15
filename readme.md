@@ -56,6 +56,10 @@ Chaque logger doit etre identifiable.
 
 Chaque logger doit posseder un horodatage, et une profondeur acceptable sur les objets.
 
+## Methodes
+
+- [simple comme bonjour](/packages/hello/readme.md)
+
 ## Installation nodejs via nvm (node version manager)
 
 - [macos/linux](https://github.com/nvm-sh/nvm) or use Makefile command: ```make nvm```
