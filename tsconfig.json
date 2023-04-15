@@ -1,6 +1,7 @@
 {
     "extends": "./tsconfig.build.json",
     "compilerOptions": {
+        "noPropertyAccessFromIndexSignature": false, /* Why ts-node crash with this when is true */
         "baseUrl": "./"
     },
     "include": [
