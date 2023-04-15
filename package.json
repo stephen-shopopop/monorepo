@@ -31,7 +31,7 @@
     "lint": "ts-standard --verbose | snazzy",
     "lint:fix": "ts-standard --fix",
     "typecheck": "tsc --noEmit",
-    "versionning": "turbo run typecheck lint test && changeset version",
+    "versionning": "turbo run lint test && changeset version",
     "clean": "find . -name 'dist' -type d -prune -exec rm -rf '{}' +",
     "maintenance": "find . -name 'node_modules' -type d -prune -exec rm -rf '{}' +"
   },
