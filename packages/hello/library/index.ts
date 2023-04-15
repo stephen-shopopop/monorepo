@@ -1,5 +1,6 @@
 import pino from 'pino'
 
-const logger = pino({ level: 'info' })
+// ⛔️ Configuration applicative couplé dans la librairie
+const logger = pino({ level: process.env.LEVEL ?? 'info' })
 
 export default logger
