@@ -2,6 +2,7 @@ import logger from './library'
 
 // ⚠️ Fort couplage avec pino
 // Complexity: demande au dev de bien verifier que les methodes de pino soit compatible avec une autre dependance.
+// ⚠️ Typage hérité de la dependance, peut engendrer une contradiction sur l´usage applicatif
 logger.warn('hello')
 
 // ⛔️ Couplage trop present
