@@ -1,5 +1,6 @@
 # Workspace ignore
 packages/*/dist
+test-reports
 
 # Artifact files
 dist/
