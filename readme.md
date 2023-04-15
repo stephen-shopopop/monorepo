@@ -13,13 +13,13 @@ Les differentes methodes pour creer une librairie afin d´isoler une dependances
 
 ## Analyse de cas
 
-Dans ce projet, nous aborderons la construction d´une librairie de log.
+Dans ce projet, nous aborderons la construction d´une librairie de log "logger".
 
 __cahier des charges:__
 
-- Nous avons besoin de plusieurs instances de log dans une application (log de demarrage, log d´erreur, log de debug)
-- Chaque instance de log doit pouvoir s´adapter a son environnement (dev, staging, production).
-- Chaque instance de log doit avoir sa propre configuration
+- Nous avons besoin de plusieurs instances de logger dans une application (log de demarrage, log d´erreur, log de debug)
+- Chaque instance de logger doit pouvoir s´adapter a son environnement (dev, staging, production).
+- Chaque instance de logger doit avoir sa propre configuration
 - La librairie logger doit etre securisant a l´usage (typescript)
 - La librairie logger ne doit pas etre tester dans la logique metier (la librairie doit etre robuste et posseder ces propres tests)
 - La dependance utiliser par la librairie doit pouvoir etre inter-changeable (pino, bunyan, winston, etc...)
