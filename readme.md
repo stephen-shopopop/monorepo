@@ -29,6 +29,33 @@ __cahier des charges:__
 
 __Analyse du besoin:__
 
+Logger bas niveau:
+
+- 2 arguments en entree: une string et un object
+- aucun filtre sur les levels d´erreurs remontees
+- ex: log demarrage du projet, log sigint, etc...
+
+Logger applicatif:
+
+- Les arguments sont variables et de type non defini
+- filtre selon environnement (dev, staging, production)
+- filtre sur des donnees sensible
+- log envoye vers des outils de telemetrie (logstash, promotheus, etc...)
+- les logs ne doivent pas s´afficher sur lancement de test (jest: NODE_ENV=test)
+
+Logger extendError:
+
+- arguments: instance de type Error
+- filtre selon environnement (dev, staging, production)
+- log envoye uniquement sur le journal du terminal selon level
+- les logs ne doivent pas s´afficher sur lancement de test (jest: NODE_ENV=test)
+
+Chaque logger possedent 5 methodes: debug, info, warn, error et fatal. Un filtre pour chacune des methodes.
+
+Chaque logger doit etre identifiable.
+
+Chaque logger doit posseder un horodatage, et une profondeur acceptable sur les objets.
+
 ## Installation nodejs via nvm (node version manager)
 
 - [macos/linux](https://github.com/nvm-sh/nvm) or use Makefile command: ```make nvm```
