@@ -31,6 +31,7 @@
     "lint": "ts-standard --verbose | snazzy",
     "lint:fix": "ts-standard --fix",
     "typecheck": "tsc --noEmit",
+    "versionning": "turbo run typecheck lint test && changeset version",
     "clean": "find . -name 'dist' -type d -prune -exec rm -rf '{}' +",
     "maintenance": "find . -name 'node_modules' -type d -prune -exec rm -rf '{}' +"
   },
@@ -57,6 +58,7 @@
     "./packages/*"
   ],
   "devDependencies": {
+    "@changesets/cli": "^2.26.1",
     "@commitlint/cli": "^17.4.0",
     "@commitlint/config-conventional": "^17.4.0",
     "@jest-performance-reporter/core": "^2.1.3",
