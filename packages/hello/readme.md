@@ -32,22 +32,3 @@ __nota:__ Dans certain cas cette methode est a priviligier, si la dependance ne 
 1. npm run start -  Start project
 2. npm run dev - Start project with ts-node (dev only)
 3. npm run build - Build ts
-
-## Production
-
-```bash
-npm i --production
-npm start
-```
-
-## Docs
-
-### Summary
-
-### Package maintenance
-
-A modern cli tool that keeps your deps fresh
-
-```bash
-npx taze
-```
