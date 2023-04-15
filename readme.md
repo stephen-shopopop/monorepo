@@ -58,7 +58,7 @@ Chaque logger doit posseder un horodatage, et une profondeur acceptable sur les 
 
 ## Methodes
 
-- [simple comme bonjour](/packages/hello/readme.md)
+- [simple comme bonjour](/packages/hello)
 
 ## Installation nodejs via nvm (node version manager)
 
