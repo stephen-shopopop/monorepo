@@ -1,5 +1,6 @@
 export type LOG_LEVELS = 'debug' | 'info' | 'warn' | 'error' | 'fatal'
 
+// ✅ Garantir Interface entre wrapper et pinoLogger
 export interface Logger {
   debug: (message: string, metadata?: object) => void
   error: (message: string, metadata?: object) => void
