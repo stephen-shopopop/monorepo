@@ -28,7 +28,9 @@ export class LoggerWrapper implements Logger {
         // ✅ On desactive le logger lorsque des tests sont executé
         process.env['NODE_ENV'] !== 'test',
         // ✅ On nomme chaque logger afin d´indentifier dans le terminal si besoin
-        configuration.name
+        configuration.name,
+        // ✅  filtre des données sensible
+        configuration.redact
       )
     }
   }

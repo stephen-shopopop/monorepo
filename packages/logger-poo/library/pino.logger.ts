@@ -13,7 +13,8 @@ export default class PinoLogger implements Logger {
     private readonly level: LOG_LEVELS,
     private readonly prettyPrintEnabled: boolean,
     private readonly enabled: boolean,
-    private readonly name?: string
+    private readonly name?: string,
+    private readonly redact?: string[]
   ) {
     const options: LoggerOptions = {
       enabled: this.enabled,
@@ -22,6 +23,10 @@ export default class PinoLogger implements Logger {
 
     if (this.name !== undefined) {
       options.name = this.name
+    }
+
+    if (Array.isArray(this.redact)) {
+      options.redact = this.redact
     }
 
     if (this.prettyPrintEnabled) {
