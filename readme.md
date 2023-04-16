@@ -59,6 +59,7 @@ Chaque logger doit posseder un horodatage, et une profondeur acceptable sur les 
 ## Methodes
 
 - [simple comme bonjour](/packages/hello)
+- [hello the world - poo](/package/logger-poo)
 
 ## Installation nodejs via nvm (node version manager)
 
