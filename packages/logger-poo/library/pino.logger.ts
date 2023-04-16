@@ -42,9 +42,13 @@ export default class PinoLogger implements Logger {
     this.#logger = pino(options)
   }
 
+  #isEmptyMessage (message: string): string | undefined {
+    return message !== '' ? message : undefined
+  }
+
   debug (message: string, metadata?: object): void {
     if (metadata != null) {
-      this.#logger.debug(metadata, message)
+      this.#logger.debug(metadata, this.#isEmptyMessage(message))
     } else {
       this.#logger.debug(message)
     }
@@ -52,7 +56,7 @@ export default class PinoLogger implements Logger {
 
   error (message: string, metadata?: object): void {
     if (metadata != null) {
-      this.#logger.error(metadata, message)
+      this.#logger.error(metadata, this.#isEmptyMessage(message))
     } else {
       this.#logger.error(message)
     }
@@ -60,7 +64,7 @@ export default class PinoLogger implements Logger {
 
   fatal (message: string, metadata?: object): void {
     if (metadata != null) {
-      this.#logger.fatal(metadata, message)
+      this.#logger.fatal(metadata, this.#isEmptyMessage(message))
     } else {
       this.#logger.fatal(message)
     }
@@ -68,15 +72,15 @@ export default class PinoLogger implements Logger {
 
   info (message: string, metadata?: object): void {
     if (metadata != null) {
-      this.#logger.info(metadata, message)
+      this.#logger.info(metadata, this.#isEmptyMessage(message))
     } else {
       this.#logger.info(message)
     }
   }
 
-  warning (message: string, metadata?: object): void {
+  warn (message: string, metadata?: object): void {
     if (metadata != null) {
-      this.#logger.warn(metadata, message)
+      this.#logger.warn(metadata, this.#isEmptyMessage(message))
     } else {
       this.#logger.warn(message)
     }

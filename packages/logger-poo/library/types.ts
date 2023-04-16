@@ -5,7 +5,7 @@ export interface Logger {
   error: (message: string, metadata?: object) => void
   fatal: (message: string, metadata?: object) => void
   info: (message: string, metadata?: object) => void
-  warning: (message: string, metadata?: object) => void
+  warn: (message: string, metadata?: object) => void
 }
 
 export interface LoggerConfiguration {

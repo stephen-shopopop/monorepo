@@ -5,6 +5,9 @@ process.env['PRETTY_PRINT'] = 'true'
 // ✅ typage strict facilitant l´usage
 logger.error('hello the world', new Error('Oups'))
 
+// ✅ Overload typage
+logger.error({ context: 'How are you?' })
+
 // ✅ Good practice: configuration a la charge de l´applicatif
 logger.configureLogger({
   prettyPrint: Boolean(process.env['PRETTY_PRINT'])
@@ -21,4 +24,4 @@ logger.configureLogger({
   prettyPrint: Boolean(process.env['PRETTY_PRINT'])
 }, true)
 
-logger.warning('Hello the world')
+logger.warn('Hello the world')

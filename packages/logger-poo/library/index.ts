@@ -40,25 +40,56 @@ export class LoggerWrapper implements Logger {
     this.#underlyingLogger = null
   }
 
-  debug (message: string, metadata?: object): void {
-    this.#getInitializeLogger().debug(message, metadata)
+  debug (message: object): void
+  debug (message: string, metadata?: object): void
+  debug (message: string | object, metadata?: object): void {
+    // ✅ type guard
+    if (typeof message === 'string') {
+      this.#getInitializeLogger().debug(message, metadata)
+    } else {
+      this.#getInitializeLogger().debug('', message)
+    }
   }
 
-  error (message: string, metadata?: object): void {
-    this.#getInitializeLogger().error(message, metadata)
+  error (message: object): void
+  error (message: string, metadata?: object): void
+  error (message: string | object, metadata?: object): void {
+    if (typeof message === 'string') {
+      this.#getInitializeLogger().error(message, metadata)
+    } else {
+      this.#getInitializeLogger().error('', message)
+    }
   }
 
-  fatal (message: string, metadata?: object): void {
-    this.#getInitializeLogger().fatal(message, metadata)
+  fatal (message: object): void
+  fatal (message: string, metadata?: object): void
+  fatal (message: string | object, metadata?: object): void {
+    if (typeof message === 'string') {
+      this.#getInitializeLogger().fatal(message, metadata)
+    } else {
+      this.#getInitializeLogger().fatal('', metadata)
+    }
   }
 
-  info (message: string, metadata?: object): void {
+  info (message: object): void
+  info (message: string, metadata?: object): void
+  info (message: string | object, metadata?: object): void {
     // ✅ On initialise la classe pinoLogger si pas instancié
-    this.#getInitializeLogger().info(message, metadata)
+    if (typeof message === 'string') {
+      this.#getInitializeLogger().info(message, metadata)
+    } else {
+      this.#getInitializeLogger().info('', metadata)
+    }
   }
 
-  warning (message: string, metadata?: object): void {
-    this.#getInitializeLogger().warning(message, metadata)
+  warn (message: object): void
+  warn (message: string, metadata?: object): void
+  warn (message: string | object, metadata?: object): void {
+    if (typeof message === 'string') {
+      this.#getInitializeLogger().warn(message, metadata)
+    } else {
+      this.#getInitializeLogger().warn('', metadata)
+    }
   }
 }
 
