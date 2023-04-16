@@ -37,10 +37,9 @@ Logger bas niveau:
 
 Logger applicatif:
 
-- Les arguments sont variables et de type non defini
+- 2 arguments en entree: une string et un object
 - filtre selon environnement (dev, staging, production)
 - filtre sur des donnees sensible
-- log envoye vers des outils de telemetrie (logstash, promotheus, etc...)
 - les logs ne doivent pas s´afficher sur lancement de test (jest: NODE_ENV=test)
 
 Logger extendError:
