@@ -42,7 +42,7 @@ Logger applicatif:
 - filtre sur des donnees sensible
 - les logs ne doivent pas s´afficher sur lancement de test (jest: NODE_ENV=test)
 
-Logger extendError:
+Logger for classe extend Error:
 
 - arguments: instance de type Error
 - filtre selon environnement (dev, staging, production)
