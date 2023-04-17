@@ -1,6 +1,6 @@
 {
   "entryPoints": ["packages/*"],
-  "name": "Packages Example",
+  "name": "Packages Logger",
   "entryPointStrategy": "packages",
   "includeVersion": true
 }
