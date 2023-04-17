@@ -1,6 +1,0 @@
-{
-  "entryPoints": ["packages/hello/index.ts", "package/logger-poo/index.ts"],
-  "name": "Packages Logger",
-  "entryPointStrategy": "packages",
-  "includeVersion": true
-}
