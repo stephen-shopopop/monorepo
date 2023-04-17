@@ -35,7 +35,8 @@
     "changeset": "changeset",
     "version": "turbo run lint test && changeset version",
     "clean": "find . -name 'dist' -type d -prune -exec rm -rf '{}' +",
-    "maintenance": "find . -name 'node_modules' -type d -prune -exec rm -rf '{}' +"
+    "maintenance": "find . -name 'node_modules' -type d -prune -exec rm -rf '{}' +",
+    "docs": "typedoc"
   },
   "keywords": [
     "logger"
@@ -82,6 +83,7 @@
     "ts-node": "^10.9.1",
     "ts-standard": "^12.0.2",
     "turbo": "^1.9.2",
+    "typedoc": "^0.24.0",
     "typescript": "^5.0.4"
   }
 }
