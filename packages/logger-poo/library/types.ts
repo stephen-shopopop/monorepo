@@ -12,6 +12,6 @@ export interface Logger {
 export interface LoggerConfiguration {
   level: LOG_LEVELS
   prettyPrint: boolean
-  name: string
+  label: string
   redact: string[]
 }
