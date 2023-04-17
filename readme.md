@@ -9,23 +9,24 @@
 
 ## Description
 
-Les differentes methodes pour creer une librairie afin d´isoler une dependances et permettre de pouvoir changer de dependances.
+Les differentes methodes pour creer une librairie afin d´isoler une dependances.
 
-## Analyse de cas
+## Etude de cas
 
-Dans ce projet, nous aborderons la construction d´une librairie de log "logger".
+Dans ce projet, nous aborderons la construction d´une librairie de log dit "logger".
+La dependance [pino](https://getpino.io) sera utilise a titre d´exemple.
 
 __cahier des charges:__
 
-- Nous avons besoin de plusieurs instances de logger dans une application (log de demarrage, log d´erreur, log de debug)
-- Chaque instance de logger doit pouvoir s´adapter a son environnement (dev, staging, production).
-- Chaque instance de logger doit avoir sa propre configuration
-- La librairie logger doit etre securisant a l´usage (typescript)
-- La librairie logger ne doit pas etre tester dans la logique metier (la librairie doit etre robuste et posseder ces propres tests)
-- La dependance utiliser par la librairie doit pouvoir etre inter-changeable (pino, bunyan, winston, etc...)
+- Nous avons besoin de plusieurs instances de log dans une application (log de demarrage, log d´erreur, log de debug).
+- Chaque instance de log doit pouvoir s´adapter a son environnement (dev, staging, production).
+- Chaque instance de log doit avoir sa propre configuration.
+- La librairie logger doit etre securisant a l´usage (typescript).
+- La librairie logger ne doit pas etre tester dans la logique metier (la librairie doit etre robuste et posseder ces propres tests).
+- La dependance utiliser par la librairie doit pouvoir etre inter-changeable (pino, bunyan, winston, etc...).
 - La librairie logger doit correspondre a l'usage et aux besoins (toutes les fonctionnalitees de la dependances ne sont pas forcement necessaire).
-- La librairie logger doit etre sans complexite a l´usage (la librairie peut etre complexe mais pas son usage)
-- La librairie logger doit pouvoir etre modifier en package si necessaire (usage sur plusieurs services)
+- La librairie logger doit etre sans complexite a l´usage (la librairie peut etre complexe mais pas son usage).
+- La librairie logger doit pouvoir etre modifier en package si necessaire.
 
 __Analyse du besoin:__
 
@@ -38,27 +39,28 @@ Logger bas niveau:
 Logger applicatif:
 
 - 2 arguments en entree: une string et un object
-- filtre selon environnement (dev, staging, production)
-- filtre sur des donnees sensible
+- filtre sur niveau d´erreur
+- filtre sur des donnees sensibles
 - les logs ne doivent pas s´afficher sur lancement de test (jest: NODE_ENV=test)
 
 Logger for classe extend Error:
 
 - arguments: instance de type Error
 - filtre selon environnement (dev, staging, production)
-- log envoye uniquement sur le journal du terminal selon level
+- filtre sur niveau d'erreur
 - les logs ne doivent pas s´afficher sur lancement de test (jest: NODE_ENV=test)
 
-Chaque logger possedent 5 methodes: debug, info, warn, error et fatal. Un filtre pour chacune des methodes.
+La librairie "logger" doit posseder:
 
-Chaque logger doit etre identifiable.
-
-Chaque logger doit posseder un horodatage, et une profondeur acceptable sur les objets.
+- 5 methodes: debug, info, warn, error et fatal. 
+- Un filtre sur le niveau d´erreur: debug, info, warn, error et fatal.
+- Doit etre identifiable via un label.
+- Doit posseder un horodatage, et une profondeur acceptable sur les objets.
 
 ## Methodes
 
-- [simple comme bonjour](/packages/hello)
-- [hello the world - poo](/packages/logger-poo)
+- [simple comme bonjour](https://github.com/stephen-shopopop/logger/tree/main/packages/hello)
+- [hello the world - poo](https://github.com/stephen-shopopop/logger/tree/main/packages/logger-poo)
 
 ## Installation nodejs via nvm (node version manager)
 
