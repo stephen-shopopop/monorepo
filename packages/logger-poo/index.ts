@@ -18,7 +18,7 @@ logger.resetLogger()
 
 // ✅  on instancie un nouveau logger
 logger.configureLogger({
-  name: 'myService',
+  label: 'myService',
   prettyPrint: Boolean(process.env['PRETTY_PRINT'])
 }, true)
 

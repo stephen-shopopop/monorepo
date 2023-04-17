@@ -107,8 +107,8 @@ describe('logger', () => {
   test('it should print the passed metadata with redact configuration', async () => {
     // Arrange
     const stdoutStub = sinon.stub(process.stdout, 'write')
-    logger.configureLogger({ level: 'info', redact: ['name'] }, true)
-    const objectToPrint = { context: 'How are you', name: 'marc' }
+    logger.configureLogger({ level: 'info', redact: ['mysecret'] }, true)
+    const objectToPrint = { context: 'How are you', mysecret: 'marc' }
 
     // Act
     logger.info('I am a info', objectToPrint)
@@ -119,7 +119,7 @@ describe('logger', () => {
     expect(lastStdoutCall).toMatchObject({
       msg: 'I am a info',
       ...objectToPrint,
-      ...{ name: '[Redacted]' }
+      ...{ mysecret: '[Redacted]' }
     })
   })
 })
