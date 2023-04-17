@@ -8,6 +8,7 @@ import { LOG_LEVELS, Logger } from './types'
 // ✅ Ajout d´une fonctionnalite pour les developpeurs: pino-pretty (interne à la dependance)
 export default class PinoLogger implements Logger {
   readonly #logger: PinoLoggerImpl
+  readonly #emptyMessage: string = ''
 
   constructor (
     private readonly level: LOG_LEVELS,
@@ -43,7 +44,7 @@ export default class PinoLogger implements Logger {
   }
 
   #handleMessage (message: string): string | undefined {
-    return message !== '' ? message : undefined
+    return message !== this.#emptyMessage ? message : undefined
   }
 
   debug (message: string, metadata?: object): void {

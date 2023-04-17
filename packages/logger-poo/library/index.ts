@@ -8,6 +8,7 @@ import { Logger, LoggerConfiguration } from './types'
 // ✅ Configuration par defaut pour un usage immediat
 export class LoggerWrapper implements Logger {
   #underlyingLogger: Logger | null = null
+  readonly #emptyMessage: string = ''
 
   #getInitializeLogger (): Logger {
     this.configureLogger({}, false)
@@ -47,7 +48,7 @@ export class LoggerWrapper implements Logger {
     if (typeof message === 'string') {
       this.#getInitializeLogger().debug(message, metadata)
     } else {
-      this.#getInitializeLogger().debug('', message)
+      this.#getInitializeLogger().debug(this.#emptyMessage, message)
     }
   }
 
@@ -57,7 +58,7 @@ export class LoggerWrapper implements Logger {
     if (typeof message === 'string') {
       this.#getInitializeLogger().error(message, metadata)
     } else {
-      this.#getInitializeLogger().error('', message)
+      this.#getInitializeLogger().error(this.#emptyMessage, message)
     }
   }
 
@@ -67,7 +68,7 @@ export class LoggerWrapper implements Logger {
     if (typeof message === 'string') {
       this.#getInitializeLogger().fatal(message, metadata)
     } else {
-      this.#getInitializeLogger().fatal('', metadata)
+      this.#getInitializeLogger().fatal(this.#emptyMessage, metadata)
     }
   }
 
@@ -78,7 +79,7 @@ export class LoggerWrapper implements Logger {
     if (typeof message === 'string') {
       this.#getInitializeLogger().info(message, metadata)
     } else {
-      this.#getInitializeLogger().info('', metadata)
+      this.#getInitializeLogger().info(this.#emptyMessage, metadata)
     }
   }
 
@@ -88,7 +89,7 @@ export class LoggerWrapper implements Logger {
     if (typeof message === 'string') {
       this.#getInitializeLogger().warn(message, metadata)
     } else {
-      this.#getInitializeLogger().warn('', metadata)
+      this.#getInitializeLogger().warn(this.#emptyMessage, metadata)
     }
   }
 }

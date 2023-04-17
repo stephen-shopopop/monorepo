@@ -1,7 +1,5 @@
 import { logger } from './library'
 
-process.env['PRETTY_PRINT'] = 'true'
-
 // ✅ typage strict facilitant l´usage
 logger.error('hello the world', new Error('Oups'))
 
