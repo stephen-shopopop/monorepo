@@ -18,6 +18,10 @@ Isoler une dependance, simple comme bonjour tout le monde avec une approche orie
 - ✅ tests de la librairie
 - ✅ typage strict
 - ✅ configuration bien isoler
+- ✅ configuration a chaud
+- ✅ possibilite d'instancier un nouveau logger
+- ✅ filtre des donnees sensible
+- ✅ label du logger pour une analyse simplifier
 
 ## Contributing
 

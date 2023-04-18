@@ -68,7 +68,7 @@ export class LoggerWrapper implements Logger {
     if (typeof message === 'string') {
       this.#getInitializeLogger().fatal(message, metadata)
     } else {
-      this.#getInitializeLogger().fatal(this.#emptyMessage, metadata)
+      this.#getInitializeLogger().fatal(this.#emptyMessage, message)
     }
   }
 
@@ -79,7 +79,7 @@ export class LoggerWrapper implements Logger {
     if (typeof message === 'string') {
       this.#getInitializeLogger().info(message, metadata)
     } else {
-      this.#getInitializeLogger().info(this.#emptyMessage, metadata)
+      this.#getInitializeLogger().info(this.#emptyMessage, message)
     }
   }
 
@@ -89,7 +89,7 @@ export class LoggerWrapper implements Logger {
     if (typeof message === 'string') {
       this.#getInitializeLogger().warn(message, metadata)
     } else {
-      this.#getInitializeLogger().warn(this.#emptyMessage, metadata)
+      this.#getInitializeLogger().warn(this.#emptyMessage, message)
     }
   }
 }
