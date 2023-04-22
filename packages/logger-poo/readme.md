@@ -8,7 +8,9 @@
 
 ## Description
 
-Isoler une dependance, simple comme bonjour tout le monde avec une approche orient objet
+Isoler une dependance, simple comme bonjour tout le monde - programmation orienté objet
+
+## Analyse
 
 Description | Status | Détails
  ---: | :---: | :---
@@ -29,7 +31,7 @@ Facilité d´usage | yes | -
 Usage cadré repondant aux besoins | yes | -
 Qualité et test de la librairie | yes | Ecriture de tests obligatoire pour valider le besoin
 
-## Analyses
+## Conclusion
 
 - ✅ facilite d'usage
 - ✅ fonctionnelle
