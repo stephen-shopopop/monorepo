@@ -44,6 +44,8 @@ Qualité et test de la librairie | yes | Ecriture de tests obligatoire pour vali
 - ✅ filtre des donnees sensible
 - ✅ label du logger pour une analyse simplifier
 
+La librairie offre un chargement de la configuration à chaud, ainsi le logger peut être utilisé dans n´importe quel autre package et la configuration implémenter dans le service sera effective pour l´ensemble des appels du logger. Disponible uniquement sur logger par defaut "logger".
+
 ## Contributing
 
 1. npm run start -  Start project
