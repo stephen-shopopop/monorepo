@@ -19,14 +19,14 @@ Filtre niveau d´erreur | no | options pino disponible, doit être déclaré
 Label sur logger | no | options pino disponible, doit être déclaré
 Filtre données sensible | no | options pino disponible, doit être déclaré
 Pretty log pour développeur | no | options pino disponible, doit être déclaré
-Log sur execution de test | yes/no | options pino partiellement disponible, mettre en place un conditionnel
+Filtre log sur execution de tests | no | options pino partiellement disponible, mettre en place un conditionnel
 Typage de l'utilisation | no | type any sur tous les arguments des méthodes du logger
 Profondeur objects | yes | -
 Horodatage | yes | -
 Isolation de la dependance | no | -
 Dépendance inter-changeable | no | fort risque de modifier la logique si un guideline n´est pas mit en place
 Conversion en package | no | aucun intérêt
-Facilité d´usage | yes/no | Se reporter à la documentation de la dependance
+Facilité d´usage | no | Se reporter à la documentation de la dependance
 Usage cadré repondant aux besoins | no | l´ensemble des methodes de la dependance sont exposées
 
 ## Analyses
