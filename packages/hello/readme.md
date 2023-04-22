@@ -28,6 +28,7 @@ Dépendance inter-changeable | no | fort risque de modifier la logique si un gui
 Conversion en package | no | aucun intérêt
 Facilité d´usage | no | Se reporter à la documentation de la dependance
 Usage cadré repondant aux besoins | no | l´ensemble des methodes de la dependance sont exposées
+Qualité et test de la librairie | no | cela revient à tester la librairie
 
 ## Analyses
 
