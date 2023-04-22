@@ -63,8 +63,8 @@ La librairie "logger" doit posséder:
 
 ## Methodes
 
-- [simple comme bonjour](https://github.com/stephen-shopopop/logger/tree/main/packages/hello)
-- [hello the world - poo](https://github.com/stephen-shopopop/logger/tree/main/packages/logger-poo)
+- [simple comme bonjour](https://github.com/stephen-shopopop/logger/tree/main/packages/hello) - programmation imperative
+- [hello the world - poo](https://github.com/stephen-shopopop/logger/tree/main/packages/logger-poo) - programmation orienté objet
 
 ## Installation nodejs via nvm (node version manager)
 
