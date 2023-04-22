@@ -10,6 +10,24 @@
 
 Isoler une dependance, simple comme bonjour tout le monde avec une approche orient objet
 
+Description | Status | Détails
+ ---: | :---: | :---
+5 méthodes: debug, info, warn, error, fatal | yes | -
+Multi-instance du logger | yes | classe LoggerWrapper
+Filtre niveau d´erreur | yes | configuration disponible
+Label sur logger | yes | configuration disponible
+Filtre données sensible | yes | configuration disponible
+Pretty log pour développeur | yes | configuration disponible sur variable d´environnement
+Filtre log sur execution de tests | yes | -
+Typage de l'utilisation | yes | 2 niveaux correspondant aux besoins
+Profondeur objects | yes | -
+Horodatage | yes | -
+Isolation de la dependance | yes | -
+Dépendance inter-changeable | yes | la librairie est découplé de l´usage
+Conversion en package | yes | -
+Facilité d´usage | yes | -
+Usage cadré repondant aux besoins | yes | -
+
 ## Analyses
 
 - ✅ facilite d'usage
