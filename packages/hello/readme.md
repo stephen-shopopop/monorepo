@@ -11,6 +11,11 @@
 
 Isoler une dependance, simple comme bonjour
 
+Description | Status | Détails
+ ---: | :---: | :---
+5 méthodes | yes | -
+Filtre niveau d´erreur | - | -
+
 ## Analyses
 
 - ✅ facilite de mise en place
