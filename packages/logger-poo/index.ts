@@ -8,7 +8,7 @@ logger.error(new Error('an error'))
 
 // ✅ Good practice: configuration a la charge de l´applicatif
 // Tout les logs qui vont suivre appliqueront la configuration
-// ainsi l'usage du logger dans un package est simplifier car la configuration sera applique par le service
+// ainsi l'usage du logger dans un package tierce est simplifier car la configuration sera applique par le service
 logger.configureLogger({
   prettyPrint: Boolean(process.env['PRETTY_PRINT'])
 }, true)
