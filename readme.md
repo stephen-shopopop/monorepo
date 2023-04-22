@@ -29,7 +29,7 @@ __cahier des charges:__
 - La dependance utilisée par la librairie doit pouvoir être inter-changeable (pino, bunyan, winston, etc...).
 - La librairie logger doit correspondre à l'usage et aux besoins (toutes les fonctionnalitées de la dépendances ne sont pas forcement necessaires).
 - La librairie logger doit être sans complexité à l´usage (la librairie peut être complexe mais pas son usage).
-- La librairie logger doit pouvoir être modifiée en package si nécessaire.
+- La librairie logger doit pouvoir être converti en package (github, npm, etc...) si nécessaire.
 
 __Analyse du besoin:__
 
