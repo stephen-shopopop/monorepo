@@ -13,8 +13,21 @@ Isoler une dependance, simple comme bonjour
 
 Description | Status | Détails
  ---: | :---: | :---
-5 méthodes | yes | -
-Filtre niveau d´erreur | - | -
+5 méthodes: debug, info, warn, error, fatal | yes | -
+Multi-instance du logger | no | le code doit être dupliqué
+Filtre niveau d´erreur | no | options pino disponible, doit être déclaré
+Label sur logger | no | options pino disponible, doit être déclaré
+Filtre données sensible | no | options pino disponible, doit être déclaré
+Pretty log pour développeur | no | options pino disponible, doit être déclaré
+Log sur execution de test | yes/no | options pino partiellement disponible, mettre en place un conditionnel
+Typage de l'utilisation | no | type any sur tous les arguments des méthodes du logger
+Profondeur objects | yes | -
+Horodatage | yes | -
+Isolation de la dependance | no | -
+Dépendance inter-changeable | no | fort risque de modifier la logique si un guideline n´est pas mit en place
+Conversion en package | no | aucun intérêt
+Facilité d´usage | yes/no | Se reporter à la documentation de la dependance
+Usage cadré repondant aux besoins | no | l´ensemble des methodes de la dependance sont exposées
 
 ## Analyses
 
@@ -23,7 +36,7 @@ Filtre niveau d´erreur | - | -
 - ✅ tests non necessaire de la librairie (cela reviendrait a tester la dependance)
 - ⚠️ complexite pour eviter un couplage trop present avec la dependance
 - ⚠️ impossible d'injecter une logique applicative
-- ⚠️ la fonction doit etre dupliquée si le projet a besoin de plusieurs instances
+- ⚠️ la fonction doit etre dupliquée si le projet a besoin de plusieurs instances avec des configurtions différentes
 - ⛔️ Configuration dans la librairie
 - ⛔️ typage pas suffisament strict et ne reponds pas forcement aux besoins
 - ⛔️ bien que la librairie n'a pas besoin de test, sont usage peut necessite des tests car le typage n'est pas assez strict. ex: logger.warn(...any[])
