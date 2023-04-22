@@ -9,7 +9,9 @@
 
 ## Description
 
-Isoler une dependance, simple comme bonjour
+Isoler une dependance, simple comme bonjour - programmation imperative
+
+## Analyse
 
 Description | Status | Détails
  ---: | :---: | :---
@@ -30,7 +32,7 @@ Facilité d´usage | no | Se reporter à la documentation de la dependance
 Usage cadré repondant aux besoins | no | l´ensemble des methodes de la dependance sont exposées
 Qualité et test de la librairie | no | cela revient à tester la librairie
 
-## Analyses
+## Conclusion
 
 - ✅ facilite de mise en place
 - ✅ fonctionnelle
