@@ -15,7 +15,7 @@ Description | Status | Détails
  ---: | :---: | :---
 5 méthodes: debug, info, warn, error, fatal | yes | -
 Multi-instance du logger | no | le code doit être dupliqué
-Filtre niveau d´erreur | no | options pino disponible, doit être déclaré
+Filtre niveau d´erreur | yes | options pino disponible déclaré avec configuration dans la librairie
 Label sur logger | no | options pino disponible, doit être déclaré
 Filtre données sensible | no | options pino disponible, doit être déclaré
 Pretty log pour développeur | no | options pino disponible, doit être déclaré
