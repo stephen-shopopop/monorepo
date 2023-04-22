@@ -59,6 +59,7 @@ La librairie "logger" doit posséder:
 - Un filtre sur le niveau d´erreur: debug, info, warn, error et fatal.
 - Doit être identifiable via un label.
 - Doit posséder un horodatage et une profondeur acceptable sur les objets.
+- Doit avoir des logs comprehensible par un developpeur
 
 ## Methodes
 
