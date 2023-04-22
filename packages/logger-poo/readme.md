@@ -27,6 +27,7 @@ Dépendance inter-changeable | yes | la librairie est découplé de l´usage
 Conversion en package | yes | -
 Facilité d´usage | yes | -
 Usage cadré repondant aux besoins | yes | -
+Qualité et test de la librairie | yes | Ecriture de tests obligatoire pour valider le besoin
 
 ## Analyses
 
