@@ -1,5 +1,13 @@
 import { Logger, LoggerConfiguration } from './definitions'
-import pinoLogger, { PinoLogger } from './pino.logger'
+import pinoLogger, { PinoLogger, PinoLoggerProps } from './pino.logger'
+
+const handleLogger = (message: string | object, metadata?: object): PinoLoggerProps => {
+  if (typeof message === 'object') {
+    return { metadata }
+  } else {
+    return { metadata, message }
+  }
+}
 
 export const loggerWrapper = (): Logger => {
   let underlyingLogger: PinoLogger | null = null
@@ -26,41 +34,16 @@ export const loggerWrapper = (): Logger => {
     configureLogger: (configuration: Partial<LoggerConfiguration>, overrideIfExists = true) => {
       _configureLogger(configuration, overrideIfExists)
     },
-    debug: (message: string | object, metadata?: object) => {
-      if (typeof message === 'object') {
-        _getInitializeLogger().debug({ metadata: message })
-      } else {
-        _getInitializeLogger().debug({ message, metadata })
-      }
-    },
-    error: (message: string | object, metadata?: object) => {
-      if (typeof message === 'object') {
-        _getInitializeLogger().error({ metadata: message })
-      } else {
-        _getInitializeLogger().error({ message, metadata })
-      }
-    },
-    fatal: (message: string | object, metadata?: object) => {
-      if (typeof message === 'object') {
-        _getInitializeLogger().fatal({ metadata: message })
-      } else {
-        _getInitializeLogger().fatal({ message, metadata })
-      }
-    },
-    info: (message: string | object, metadata?: object) => {
-      if (typeof message === 'object') {
-        _getInitializeLogger().info({ metadata: message })
-      } else {
-        _getInitializeLogger().info({ message, metadata })
-      }
-    },
-    warn: (message: string | object, metadata?: object) => {
-      if (typeof message === 'object') {
-        _getInitializeLogger().warn({ metadata: message })
-      } else {
-        _getInitializeLogger().warn({ message, metadata })
-      }
-    },
+    debug: (message: string | object, metadata?: object) =>
+      _getInitializeLogger().debug(handleLogger(message, metadata)),
+    error: (message: string | object, metadata?: object) =>
+      _getInitializeLogger().error(handleLogger(message, metadata)),
+    fatal: (message: string | object, metadata?: object) =>
+      _getInitializeLogger().fatal(handleLogger(message, metadata)),
+    info: (message: string | object, metadata?: object) =>
+      _getInitializeLogger().info(handleLogger(message, metadata)),
+    warn: (message: string | object, metadata?: object) =>
+      _getInitializeLogger().warn(handleLogger(message, metadata)),
     resetLogger: () => {
       underlyingLogger = null
     }
