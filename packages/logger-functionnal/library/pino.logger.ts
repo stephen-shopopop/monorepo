@@ -2,16 +2,7 @@ import { LoggerOptions, pino, Logger as PinoLoggerImpl } from 'pino'
 import { LoggerConfiguration } from './definitions'
 import { match, when } from './patterns'
 
-interface PinoConfiguration extends LoggerConfiguration {
-  enabled: boolean
-}
-
-interface PinoLoggerProps {
-  message?: string
-  metadata?: object
-}
-
-interface PinoLogger {
+export interface PinoLogger {
   debug: (props: PinoLoggerProps) => void
   error: (props: PinoLoggerProps) => void
   fatal: (props: PinoLoggerProps) => void
@@ -19,11 +10,20 @@ interface PinoLogger {
   warn: (props: PinoLoggerProps) => void
 }
 
+interface PinoConfiguration extends LoggerConfiguration {
+  enabled: boolean
+}
+
+interface PinoLoggerProps {
+  metadata: object | undefined
+  message?: string
+}
+
 const pinoConfiguration = ({
   enabled = true,
   label,
   level = 'info',
-  prettyPrint = false,
+  prettyPrint,
   redact
 }: Readonly<Partial<PinoConfiguration>>): LoggerOptions => {
   const configuration: LoggerOptions = {}
@@ -32,7 +32,7 @@ const pinoConfiguration = ({
 
   if (Array.isArray(redact)) { configuration.redact = redact }
 
-  if (prettyPrint) {
+  if (prettyPrint === true) {
     configuration.transport = {
       target: 'pino-pretty',
       options: {
@@ -54,15 +54,15 @@ const hasMessage = ({ message }: PinoLoggerProps): boolean => message !== undefi
 const hasMetadata = ({ metadata }: PinoLoggerProps): boolean => metadata !== undefined
 const hasMetadataOnly = (props: PinoLoggerProps): boolean => hasMetadata(props) && !hasMessage(props)
 
-const handleLoggerProps = (props: PinoLoggerProps): [string | object, string | undefined] =>
+const handleLoggerProps = (props: PinoLoggerProps): [string | object | undefined, string | undefined] =>
   match(props)(
     when(hasMetadataOnly)(({ metadata }: PinoLoggerProps) => [metadata]),
     when(hasMetadata)(({ message, metadata }: PinoLoggerProps) => [metadata, message]),
     when(hasMessage)(({ message }: PinoLoggerProps) => [message])
-  )(nope) as [string | object, string | undefined]
+  )(nope) as [string | object | undefined, string | undefined]
 
-const loggerWrapper = (
-  configuration: Readonly<Partial<PinoConfiguration>>
+const pinoLogger = (
+  configuration: Partial<PinoConfiguration>
 ): PinoLogger => {
   const pinoLogger: PinoLoggerImpl = pino(pinoConfiguration(configuration))
 
@@ -75,4 +75,4 @@ const loggerWrapper = (
   }
 }
 
-export default loggerWrapper
+export default pinoLogger
