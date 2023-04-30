@@ -21,7 +21,7 @@ defaults:
     shell: 'bash'
 
 jobs:
-  eslint:
+  test:
     runs-on: ubuntu-latest
 
     steps:

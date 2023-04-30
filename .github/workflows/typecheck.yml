@@ -19,7 +19,7 @@ defaults:
     shell: 'bash'
 
 jobs:
-  eslint:
+  typecheck:
     runs-on: ubuntu-latest
 
     steps:

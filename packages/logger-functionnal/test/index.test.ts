@@ -3,7 +3,6 @@ import { logger } from '../library'
 
 beforeEach(() => {
   process.env['NODE_ENV'] = ''
-  sinon.restore()
   logger.resetLogger()
 })
 

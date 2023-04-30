@@ -1,10 +1,10 @@
 type Predicate<T> = (value: T) => Boolean
 
-type Function<T, O> = (value: T) => O
+type Function<T, Result> = (value: T) => Result
 
-interface Pattern<T, O> {
+interface Pattern<T, Result> {
   predicate: Predicate<T>
-  execution: Function<T, O>
+  execution: Function<T, Result>
 }
 
 const throwError = (): any => {
@@ -12,9 +12,9 @@ const throwError = (): any => {
 }
 
 export const when = <T>(predicate: Predicate<T>) => {
-  return <ResultExec>(
-    execution: Function<T, ResultExec>
-  ): Pattern<T, ResultExec> => {
+  return <Result>(
+    execution: Function<T, Result>
+  ): Pattern<T, Result> => {
     return {
       predicate,
       execution
