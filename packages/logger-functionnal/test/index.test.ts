@@ -9,6 +9,7 @@ beforeEach(() => {
 
 afterEach(() => {
   process.env['NODE_ENV'] = 'test'
+  sinon.restore()
 })
 
 describe('logger', () => {
