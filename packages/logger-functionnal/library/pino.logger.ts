@@ -10,13 +10,13 @@ export interface PinoLogger {
   warn: (props: PinoLoggerProps) => void
 }
 
-interface PinoConfiguration extends LoggerConfiguration {
-  enabled: boolean
-}
-
-interface PinoLoggerProps {
+export interface PinoLoggerProps {
   metadata: object | undefined
   message?: string
+}
+
+interface PinoConfiguration extends LoggerConfiguration {
+  enabled: boolean
 }
 
 const pinoConfiguration = ({
