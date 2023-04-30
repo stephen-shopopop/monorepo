@@ -10,7 +10,7 @@ logger.configureLogger({
   level: 'debug',
   prettyPrint: true
 }, true)
-// // ✅ Amelioration de la lisibilite du log pour le confort du developpement
+// ✅ Amelioration de la lisibilite du log pour le confort du developpement
 logger.info('hello the world')
 
 // ✅ On reset le logger
