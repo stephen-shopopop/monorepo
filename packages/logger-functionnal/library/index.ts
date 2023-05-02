@@ -3,7 +3,7 @@ import pinoLogger, { PinoLogger, PinoLoggerProps } from './pino.logger'
 
 const handleLogger = (message: string | object, metadata?: object): PinoLoggerProps => {
   if (typeof message === 'object') {
-    return { metadata }
+    return { metadata: message }
   } else {
     return { metadata, message }
   }
