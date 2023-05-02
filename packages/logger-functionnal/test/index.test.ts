@@ -27,6 +27,21 @@ describe('logger', () => {
     expect(lastStdoutCall).toMatchObject({ msg: 'I am a info' })
   })
 
+  test('When no explicit configuration is set, info logs with object are written', async () => {
+    // Arrange
+    const stdoutStub = sinon.stub(process.stdout, 'write')
+
+    // Act
+    logger.info({ surname: 'rob' })
+
+    // Assert
+    expect({ stdCallCount: stdoutStub.callCount }).toMatchObject({
+      stdCallCount: 1
+    })
+    const lastStdoutCall = JSON.parse(stdoutStub.lastCall?.firstArg)
+    expect(lastStdoutCall).toMatchObject({ surname: 'rob' })
+  })
+
   test('When log level is DEBUG and logger emits INFO statement, info logs are written', async () => {
     // Arrange
     logger.configureLogger({ level: 'debug' }, true)
