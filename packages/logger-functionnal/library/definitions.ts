@@ -8,6 +8,7 @@ export interface Logger {
   info: ((message: object) => void) & ((message: string | object, metadata?: object) => void)
   warn: ((message: object) => void) & ((message: string | object, metadata?: object) => void)
   resetLogger: () => void
+  insertContextIntoMetadata: (metadata?: object) => object | undefined
 }
 
 export interface LoggerConfiguration {

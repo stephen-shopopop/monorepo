@@ -1,3 +1,4 @@
+import { context } from '@stephen-shopopop/request-context'
 import { Logger, LoggerConfiguration } from './definitions'
 import pinoLogger, { PinoLogger, PinoLoggerProps } from './pino.logger'
 
@@ -5,7 +6,7 @@ const handleLogger = (message: string | object, metadata?: object): PinoLoggerPr
   if (typeof message === 'object') {
     return { metadata: message }
   } else {
-    return { metadata, message }
+    return { metadata: logger.insertContextIntoMetadata(metadata), message }
   }
 }
 
@@ -46,6 +47,19 @@ export const loggerWrapper = (): Logger => {
       _getInitializeLogger().warn(handleLogger(message, metadata)),
     resetLogger: () => {
       underlyingLogger = null
+    },
+    insertContextIntoMetadata (metadata?: object): object | undefined {
+      const currentContext = context.getStore()
+
+      if (currentContext === undefined) {
+        return metadata
+      }
+
+      if (metadata === undefined) {
+        return currentContext
+      }
+
+      return { ...currentContext, ...metadata }
     }
   }
 }

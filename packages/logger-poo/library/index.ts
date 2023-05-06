@@ -1,3 +1,4 @@
+import { context } from '@stephen-shopopop/request-context'
 import PinoLogger from './pino.logger'
 import { Logger, LoggerConfiguration } from './types'
 
@@ -46,7 +47,7 @@ export class LoggerWrapper implements Logger {
   debug (message: string | object, metadata?: object): void {
     // ✅ type guard
     if (typeof message === 'string') {
-      this.#getInitializeLogger().debug(message, metadata)
+      this.#getInitializeLogger().debug(message, LoggerWrapper.#insertContextIntoMetadata(metadata))
     } else {
       this.#getInitializeLogger().debug(this.#emptyMessage, message)
     }
@@ -56,7 +57,7 @@ export class LoggerWrapper implements Logger {
   error (message: string, metadata?: object): void
   error (message: string | object, metadata?: object): void {
     if (typeof message === 'string') {
-      this.#getInitializeLogger().error(message, metadata)
+      this.#getInitializeLogger().error(message, LoggerWrapper.#insertContextIntoMetadata(metadata))
     } else {
       this.#getInitializeLogger().error(this.#emptyMessage, message)
     }
@@ -66,7 +67,7 @@ export class LoggerWrapper implements Logger {
   fatal (message: string, metadata?: object): void
   fatal (message: string | object, metadata?: object): void {
     if (typeof message === 'string') {
-      this.#getInitializeLogger().fatal(message, metadata)
+      this.#getInitializeLogger().fatal(message, LoggerWrapper.#insertContextIntoMetadata(metadata))
     } else {
       this.#getInitializeLogger().fatal(this.#emptyMessage, message)
     }
@@ -77,7 +78,7 @@ export class LoggerWrapper implements Logger {
   info (message: string | object, metadata?: object): void {
     // ✅ On initialise la classe pinoLogger si pas instancié
     if (typeof message === 'string') {
-      this.#getInitializeLogger().info(message, metadata)
+      this.#getInitializeLogger().info(message, LoggerWrapper.#insertContextIntoMetadata(metadata))
     } else {
       this.#getInitializeLogger().info(this.#emptyMessage, message)
     }
@@ -87,10 +88,24 @@ export class LoggerWrapper implements Logger {
   warn (message: string, metadata?: object): void
   warn (message: string | object, metadata?: object): void {
     if (typeof message === 'string') {
-      this.#getInitializeLogger().warn(message, metadata)
+      this.#getInitializeLogger().warn(message, LoggerWrapper.#insertContextIntoMetadata(metadata))
     } else {
       this.#getInitializeLogger().warn(this.#emptyMessage, message)
     }
+  }
+
+  static #insertContextIntoMetadata (metadata?: object): object | undefined {
+    const currentContext = context.getStore()
+
+    if (currentContext === undefined) {
+      return metadata
+    }
+
+    if (metadata === undefined) {
+      return currentContext
+    }
+
+    return { ...currentContext, ...metadata }
   }
 }
 
