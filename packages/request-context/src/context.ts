@@ -1,26 +1,26 @@
 import { AsyncLocalStorage } from 'node:async_hooks'
 
-export class Context {
-  readonly #currentContext: AsyncLocalStorage<Record<PropertyKey, unknown>>
+export class Context<T extends object = Record<PropertyKey, unknown>> {
+  readonly #currentContext: AsyncLocalStorage<T>
 
   constructor () {
-    this.#currentContext = new AsyncLocalStorage<Record<PropertyKey, unknown>>()
+    this.#currentContext = new AsyncLocalStorage<T>()
   }
 
-  getStore (): Record<PropertyKey, unknown> | undefined {
+  getStore (): T | undefined {
     return this.#currentContext.getStore()
   }
 
-  addContext (key: PropertyKey, value: unknown): void {
+  add <E extends keyof T>(key: E, value: T[E]): void {
     const store = this.getStore()
 
     // Don't block if store not initialize
-    if (typeof store === 'object') {
+    if (typeof store === 'object' && store !== null) {
       store[key] = value
     }
   }
 
-  run (initialContext: Record<PropertyKey, unknown>, callback: () => void): void {
+  run (initialContext: T, callback: () => void): void {
     this.#currentContext.run(initialContext, callback)
   }
 }

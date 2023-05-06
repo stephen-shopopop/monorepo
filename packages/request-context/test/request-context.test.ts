@@ -25,8 +25,8 @@ describe('request-context', () => {
 
     // Act
     context.run({}, () => {
-      context.addContext('message', 'Yala')
-      context.addContext('label', 'koa')
+      context.add('message', 'Yala')
+      context.add('label', 'koa')
 
       getCurrentContext()
     })
@@ -44,7 +44,7 @@ describe('request-context', () => {
 
   test('When no instantiating a new context, then return undefined', () => {
     // Arrange
-    context.addContext('message', 'yala')
+    context.add('message', 'yala')
 
     // Act
     const getStore = context.getStore()
