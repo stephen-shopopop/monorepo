@@ -4,12 +4,12 @@ import { context } from '../index'
 describe('request-context', () => {
   test('When instantiating a new context with initial context, then should return the initial context', () => {
     // Arrange
-    const getCurrentContext = sinon.spy(() => context().getStore())
+    const getCurrentContext = sinon.spy(() => context.getStore())
 
     const initContext = { requestId: 'a' }
 
     // Act
-    context().run({ ...initContext }, getCurrentContext)
+    context.run({ ...initContext }, getCurrentContext)
 
     // Assert
     expect({
@@ -21,12 +21,12 @@ describe('request-context', () => {
 
   test('When instantiating a new context object and add properties, then return keys/values of store', () => {
     // Arrange
-    const getCurrentContext = sinon.spy(() => context().getStore())
+    const getCurrentContext = sinon.spy(() => context.getStore())
 
     // Act
-    context().run({}, () => {
-      context().getStore().message = 'Yala'
-      context().getStore().label = 'koa'
+    context.run({}, () => {
+      context.addContext('message', 'Yala')
+      context.addContext('label', 'koa')
 
       getCurrentContext()
     })
@@ -43,8 +43,11 @@ describe('request-context', () => {
   })
 
   test('When no instantiating a new context, then return undefined', () => {
+    // Arrange
+    context.addContext('message', 'yala')
+
     // Act
-    const getStore = context().getStore()
+    const getStore = context.getStore()
 
     // Assert
     expect(getStore).toEqual(undefined)
