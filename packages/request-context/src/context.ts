@@ -14,7 +14,7 @@ export class Context<T extends object = Record<PropertyKey, unknown>> {
   add <E extends keyof T>(key: E, value: T[E]): void {
     const store = this.getStore()
 
-    // Don't block if store not initialize
+    // Don't block if store not a record
     if (typeof store === 'object' && store !== null) {
       store[key] = value
     }
