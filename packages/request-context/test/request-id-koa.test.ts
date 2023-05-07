@@ -108,7 +108,7 @@ describe('Request ID express middleware', () => {
 
       app.use(async (ctx: Context) => {
         // add context
-        context.add('label', 'event')
+        context.set('label', 'event')
 
         ctx.body = { ...context.getStore() }
       })

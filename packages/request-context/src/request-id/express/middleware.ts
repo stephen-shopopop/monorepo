@@ -23,7 +23,7 @@ export function addRequestIdExpressMiddleware (
   const currentContext = context.getStore()
 
   if (currentContext !== undefined) {
-    context.add('requestId', requestId)
+    context.set('requestId', requestId)
 
     next()
 

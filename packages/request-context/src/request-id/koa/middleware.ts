@@ -22,7 +22,7 @@ export async function addRequestIdKoaMiddleware (
   const currentContext = context.getStore()
 
   if (currentContext !== undefined) {
-    context.add('requestId', requestId)
+    context.set('requestId', requestId)
 
     await next()
 

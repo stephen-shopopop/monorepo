@@ -106,7 +106,7 @@ describe('Request ID express middleware', () => {
 
       app.get('/', (_req, res) => {
         // add context
-        context.add('label', 'event')
+        context.set('label', 'event')
 
         res.send({ ...context.getStore() })
       })
