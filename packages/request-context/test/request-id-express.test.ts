@@ -116,7 +116,6 @@ describe('Request ID express middleware', () => {
     const response = await client.get('/')
 
     // Assert
-    // expect(response.data).toEqual("")
     expect(response).toMatchObject({
       status: 200,
       data: {
