@@ -10,10 +10,11 @@ export function addRequestIdExpressMiddleware (
   res: ServerResponse,
   next: () => void
 ): void {
-  let requestId = req.headers[REQUEST_ID_HEADER] as string | undefined
+  let requestId = req.headers[REQUEST_ID_HEADER]
 
   if (requestId === undefined) {
     requestId = generateRequestId()
+
     req.headers[REQUEST_ID_HEADER] = requestId
   }
 
@@ -23,7 +24,9 @@ export function addRequestIdExpressMiddleware (
 
   if (currentContext !== undefined) {
     context.add('requestId', requestId)
+
     next()
+
     return
   }
 

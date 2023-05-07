@@ -23,6 +23,10 @@ export class Context<T extends object = Record<PropertyKey, unknown>> {
   run (initialContext: T, callback: () => void): void {
     this.#currentContext.run(initialContext, callback)
   }
+
+  async runAsync (initialContext: T, callback: () => Promise<void>): Promise<void> {
+    await this.#currentContext.run(initialContext, callback)
+  }
 }
 
 export const context = new Context()
