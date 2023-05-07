@@ -102,7 +102,7 @@ describe('[index/hello] hello()', () => {
   pkg.scripts = {
     start: 'node dist/index.js',
     dev: 'ts-node index.ts',
-    build: 'rimraf dist/* && tsc -p tsconfig.pkg.json'
+    build: 'rm -rf dist/* && tsc -p tsconfig.pkg.json'
   }
   pkg.description = ''
 

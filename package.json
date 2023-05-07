@@ -74,7 +74,6 @@
     "jest-environment-node": "^29.5.0",
     "jest-watch-typeahead": "^2.2.2",
     "node-notifier": "^10.0.1",
-    "rimraf": "^5.0.0",
     "simple-git-hooks": "^2.8.1",
     "sinon": "^15.0.3",
     "snazzy": "^9.0.0",

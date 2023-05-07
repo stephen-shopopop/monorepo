@@ -2,19 +2,19 @@
   "name": "@stephen-shopopop/logger-poo",
   "version": "2.0.0",
   "description": "",
-  "main": "dist/index.js",
+  "main": "dist/logger-poo/index.js",
   "scripts": {
-    "start": "node dist/index.js",
+    "start": "node dist/logger-poo/index.js",
     "dev": "PRETTY_PRINT=true ts-node index.ts",
-    "build": "rimraf dist/* && tsc -p tsconfig.pkg.json"
+    "build": "rm -rf dist/* && tsc -p tsconfig.pkg.json"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
-  "types": "dist/index.d.ts",
+  "types": "dist/logger-poo/index.d.ts",
   "dependencies": {
-    "pino": "^8.11.0",
-    "@stephen-shopopop/request-context": "*"
+    "@stephen-shopopop/request-context": "*",
+    "pino": "^8.11.0"
   },
   "devDependencies": {
     "pino-pretty": "^10.0.0"
