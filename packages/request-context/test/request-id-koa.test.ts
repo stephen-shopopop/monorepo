@@ -30,7 +30,7 @@ async function stopWebServer (): Promise<void> {
   })
 }
 
-describe('Request ID express middleware', () => {
+describe('Request ID koa middleware', () => {
   afterEach(async () => {
     await stopWebServer()
   })
