@@ -9,7 +9,7 @@ export async function addRequestIdKoaMiddleware (
   ctx: Context,
   next: Next
 ): Promise<void> {
-  let requestId = ctx.headers[REQUEST_ID_HEADER]
+  let requestId = ctx.request.get(REQUEST_ID_HEADER)
 
   if (requestId === undefined) {
     requestId = generateRequestId()
