@@ -35,9 +35,4 @@ describe('[unit] fn sql()', () => {
     // Assert
     expect(query).toEqual('SELECT * FROM Users WHERE Users.id 4 AND Users.done = true')
   })
-
-  test('when bad value format then return error', () => {
-    // Assert
-    expect(() => sql('test')).toThrow('Bad template format - use tagged templating')
-  })
 })

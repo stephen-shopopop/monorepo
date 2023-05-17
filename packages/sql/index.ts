@@ -7,10 +7,10 @@ import assert from 'node:assert'
  * sql`SELECT * FROM Users`
  * ```
  */
-export const sql = (...query: Array<string | number | boolean | bigint | object>): string => {
+export const sql = (
+  ...query: [TemplateStringsArray, ...Array<string | number | boolean | Date | bigint>]
+): string => {
   const [template, ...args] = query
-
-  assert(Array.isArray(template), 'Bad template format - use tagged templating')
 
   return template.map(
     value => [value, (args.splice(0, 1))].join('')
