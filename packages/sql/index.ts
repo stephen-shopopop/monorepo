@@ -6,7 +6,7 @@
  * ```
  */
 export const sql = (
-  ...query: [TemplateStringsArray, ...Array<string | number | boolean | Date | bigint>]
+  ...query: [TemplateStringsArray, ...Array<string | number | boolean | bigint>]
 ): string => {
   const [template, ...args] = query
 
