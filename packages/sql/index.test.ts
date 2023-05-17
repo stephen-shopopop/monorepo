@@ -29,14 +29,15 @@ describe('[unit] fn sql()', () => {
     SELECT * 
     FROM Users
     ${sql`WHERE Users.id`} ${4}
+    AND Users.done = ${true}
     `
 
     // Assert
-    expect(query).toEqual('SELECT * FROM Users WHERE Users.id 4')
+    expect(query).toEqual('SELECT * FROM Users WHERE Users.id 4 AND Users.done = true')
   })
 
   test('when bad value format then return error', () => {
     // Assert
-    expect(() => sql('test')).toThrow('Bad value format')
+    expect(() => sql('test')).toThrow('Bad template format - use tagged templating')
   })
 })

@@ -7,21 +7,19 @@ import assert from 'node:assert'
  * sql`SELECT * FROM Users`
  * ```
  */
-export function sql (...args: unknown[]): string {
-  const [template, ...rest] = args
+export function sql (...query: Array<string | number | boolean | bigint | object>): string {
+  const [template, ...args] = query
 
-  assert(Array.isArray(template), 'Bad value format')
+  assert(Array.isArray(template), 'Bad template format - use tagged templating')
 
   return template.map(
     (value: unknown) => {
-      const result = [
+      const arg = args.splice(0, 1)
+
+      return [
         typeof value === 'string' ? value.replace(/\s+/g, ' ') : value,
-        rest[0]
+        arg
       ].join('')
-
-      rest.splice(0, 1)
-
-      return result
     }
   ).join('').trim()
 }
