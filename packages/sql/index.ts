@@ -13,13 +13,6 @@ export const sql = (...query: Array<string | number | boolean | bigint | object>
   assert(Array.isArray(template), 'Bad template format - use tagged templating')
 
   return template.map(
-    (value: unknown) => {
-      const arg = args.splice(0, 1)
-
-      return [
-        typeof value === 'string' ? value.replace(/\s+/g, ' ') : value,
-        arg
-      ].join('')
-    }
-  ).join('').trim()
+    value => [value, (args.splice(0, 1))].join('')
+  ).join('').replace(/\s+/g, ' ').trim()
 }
