@@ -1,5 +1,3 @@
-import assert from 'node:assert'
-
 /**
  * SQL template query
  *
