@@ -7,7 +7,7 @@ import assert from 'node:assert'
  * sql`SELECT * FROM Users`
  * ```
  */
-export function sql (...query: Array<string | number | boolean | bigint | object>): string {
+export const sql = (...query: Array<string | number | boolean | bigint | object>): string => {
   const [template, ...args] = query
 
   assert(Array.isArray(template), 'Bad template format - use tagged templating')
