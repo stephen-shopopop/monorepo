@@ -67,8 +67,8 @@ export const handleError = (errorToHandle: unknown): void => {
   try {
     const appError = normalizeError(errorToHandle)
 
-    logger.error(appError.message, appError)
-    errorHandler.emit('errorHandle', appError, context.getStore())
+    logger.error(appError)
+    errorHandler.emit('error', appError, context.getStore())
 
     if (!appError.isTrusted) {
       process.kill(process.pid, 'SIGTERM')
