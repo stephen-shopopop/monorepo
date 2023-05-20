@@ -1,5 +1,5 @@
 import { EventEmitter } from 'node:events'
-import { AppError } from '../dist'
+import { AppError } from '..'
 
 type ListenerSignature<L> = {
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -15,6 +15,6 @@ interface ErrorHandle {
   ['errorHandle']: (error: AppError, context?: Record<PropertyKey, unknown>) => Promise<void>
 }
 
-const event = new EventEmitter() as TypedPartialEventEmitter<ErrorHandle>
+const errorHandler = new EventEmitter() as TypedPartialEventEmitter<ErrorHandle>
 
-export { event }
+export { errorHandler }
