@@ -16,5 +16,8 @@
     "@stephen-shopopop/logger-poo": "*",
     "@stephen-shopopop/request-context": "*",
     "http-terminator": "^3.2.0"
+  },
+  "devDependencies": {
+    "@types/http-terminator": "^2.0.2"
   }
 }
