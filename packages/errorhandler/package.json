@@ -1,0 +1,19 @@
+{
+  "name": "@stephen-shopopop/errorhandler",
+  "version": "1.0.0",
+  "description": "",
+  "main": "dist/index.js",
+  "scripts": {
+    "start": "node dist/index.js",
+    "dev": "ts-node index.ts",
+    "build": "rm -rf dist/* && tsc -p tsconfig.pkg.json"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "types": "dist/index.d.ts",
+  "dependencies": {
+    "@stephen-shopopop/logger-poo": "*",
+    "http-terminator": "^3.2.0"
+  }
+}

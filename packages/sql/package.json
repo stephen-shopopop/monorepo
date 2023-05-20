@@ -9,8 +9,5 @@
   "keywords": [],
   "author": "",
   "license": "ISC",
-  "types": "dist/index.d.ts",
-  "dependencies": {
-    "pino": "^8.14.1"
-  }
+  "types": "dist/index.d.ts"
 }
