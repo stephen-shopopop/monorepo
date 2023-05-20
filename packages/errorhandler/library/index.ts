@@ -4,7 +4,7 @@ import { HttpTerminator, createHttpTerminator } from 'http-terminator'
 import * as Http from 'node:http'
 import * as util from 'node:util'
 import { AppError } from './appError'
-import { event } from './event'
+import { errorHandler } from './event'
 
 let httpServerRef: HttpTerminator | null
 
@@ -68,7 +68,7 @@ export const handleError = (errorToHandle: unknown): void => {
     const appError = normalizeError(errorToHandle)
 
     logger.error(appError.message, appError)
-    event.emit('errorHandle', appError, context.getStore())
+    errorHandler.emit('errorHandle', appError, context.getStore())
 
     if (!appError.isTrusted) {
       process.kill(process.pid, 'SIGTERM')
