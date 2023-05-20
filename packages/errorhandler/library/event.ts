@@ -11,8 +11,8 @@ interface TypedPartialEventEmitter<Events extends ListenerSignature<Events>> {
   emit: <E extends keyof Events>(event: E, ...args: Parameters<Events[E]>) => boolean
 }
 
-interface ErrorHandle {
-  ['errorHandle']: (error: AppError, context?: Record<PropertyKey, unknown>) => Promise<void>
+interface ErrorHandle<T extends object = Record<PropertyKey, unknown>> {
+  ['errorHandle']: (error: AppError, context?: T) => Promise<void>
 }
 
 const errorHandler = new EventEmitter() as TypedPartialEventEmitter<ErrorHandle>
