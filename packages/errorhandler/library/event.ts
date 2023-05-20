@@ -12,7 +12,7 @@ interface TypedPartialEventEmitter<Events extends ListenerSignature<Events>> {
 }
 
 interface ErrorHandle<T extends object = Record<PropertyKey, unknown>> {
-  ['errorHandle']: (error: AppError, context?: T) => Promise<void>
+  ['error']: (error: AppError, context?: T) => Promise<void>
 }
 
 const errorHandler = new EventEmitter() as TypedPartialEventEmitter<ErrorHandle>
