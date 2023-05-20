@@ -8,7 +8,9 @@ import { event } from './event'
 
 let httpServerRef: HttpTerminator | null
 
-const terminateHttpServerAndExit = async (): Promise<void> => {
+const terminateHttpServerAndExit = async (event: 'SIGINT' | 'SIGTERM'): Promise<void> => {
+  logger.error(`App received ${event} event, try to gracefully close the server`)
+
   if (httpServerRef != null) {
     await httpServerRef.terminate()
   }
@@ -45,13 +47,7 @@ export const listenToErrorEvents = (httpServer: Http.Server): void => {
   process.on('unhandledRejection', (reason) => handleError(reason))
 
   process.on('SIGTERM', () => {
-    const processEventHandler = async (): Promise<void> => {
-      logger.error('Server received SIGTERM event, try to gracefully close the server')
-
-      await terminateHttpServerAndExit()
-    }
-
-    processEventHandler().catch(error => {
+    terminateHttpServerAndExit('SIGTERM').catch(error => {
       process.stderr.write(util.inspect(error))
 
       process.exit(1)
@@ -59,13 +55,7 @@ export const listenToErrorEvents = (httpServer: Http.Server): void => {
   })
 
   process.on('SIGINT', () => {
-    const processEventHandler = async (): Promise<void> => {
-      logger.error('Server received SIGINT event, try to gracefully close the server')
-
-      await terminateHttpServerAndExit()
-    }
-
-    processEventHandler().catch(error => {
+    terminateHttpServerAndExit('SIGINT').catch(error => {
       process.stderr.write(util.inspect(error))
 
       process.exit(1)
