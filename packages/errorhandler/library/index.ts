@@ -1,5 +1,4 @@
 import { logger } from '@stephen-shopopop/logger-poo'
-import { context } from '@stephen-shopopop/request-context'
 import { HttpTerminator, createHttpTerminator } from 'http-terminator'
 import * as Http from 'node:http'
 import * as util from 'node:util'
@@ -68,7 +67,7 @@ export const handleError = (errorToHandle: unknown): void => {
     const appError = normalizeError(errorToHandle)
 
     logger.error(appError)
-    errorHandler.emit('error', appError, context.getStore())
+    errorHandler.emit('error', appError)
 
     if (!appError.isTrusted) {
       process.kill(process.pid, 'SIGTERM')
