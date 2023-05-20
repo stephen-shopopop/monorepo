@@ -38,7 +38,7 @@ const normalizeError = (errorToHandle: unknown): AppError => {
 
 export const listenToErrorEvents = (httpServer: Http.Server): void => {
   httpServerRef = createHttpTerminator({
-    gracefulTerminationTimeout: Number(process.env['GRACEFUL_TIMEOUT'] ?? '0'),
+    gracefulTerminationTimeout: Number(process.env['GRACEFUL_TIMEOUT_IN_MS'] ?? '0'),
     server: httpServer
   })
 
