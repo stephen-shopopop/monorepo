@@ -1,8 +1,10 @@
 import { logger } from '@stephen-shopopop/logger-poo'
-import * as Http from 'http'
+import { context } from '@stephen-shopopop/request-context'
 import { HttpTerminator, createHttpTerminator } from 'http-terminator'
-import * as util from 'util'
+import * as Http from 'node:http'
+import * as util from 'node:util'
 import { AppError } from './appError'
+import { event } from './event'
 
 let httpServerRef: HttpTerminator | null
 
@@ -43,31 +45,40 @@ export const listenToErrorEvents = (httpServer: Http.Server): void => {
   process.on('unhandledRejection', (reason) => handleError(reason))
 
   process.on('SIGTERM', () => {
-    const handler = async (): Promise<void> => {
+    const processEventHandler = async (): Promise<void> => {
       logger.error('Server received SIGTERM event, try to gracefully close the server')
 
       await terminateHttpServerAndExit()
     }
 
-    handler().catch(error => process.stderr.write(util.inspect(error)))
+    processEventHandler().catch(error => {
+      process.stderr.write(util.inspect(error))
+
+      process.exit(1)
+    })
   })
 
   process.on('SIGINT', () => {
-    const eventHandler = async (): Promise<void> => {
+    const processEventHandler = async (): Promise<void> => {
       logger.error('Server received SIGINT event, try to gracefully close the server')
 
       await terminateHttpServerAndExit()
     }
 
-    eventHandler().catch(error => process.stderr.write(util.inspect(error)))
+    processEventHandler().catch(error => {
+      process.stderr.write(util.inspect(error))
+
+      process.exit(1)
+    })
   })
 }
 
 export const handleError = (errorToHandle: unknown): void => {
   try {
-    const appError: AppError = normalizeError(errorToHandle)
+    const appError = normalizeError(errorToHandle)
 
     logger.error(appError.message, appError)
+    event.emit('errorHandle', appError, context.getStore())
 
     if (!appError.isTrusted) {
       process.kill(process.pid, 'SIGTERM')
