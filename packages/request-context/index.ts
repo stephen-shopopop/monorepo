@@ -1,3 +1,3 @@
-export { context } from './src/context'
-export { addRequestIdExpressMiddleware } from './src/request-id/express/middleware'
-export { addRequestIdKoaMiddleware } from './src/request-id/koa/middleware'
+export { context } from './library/context'
+export { addRequestIdExpressMiddleware } from './library/request-id/express/middleware'
+export { addRequestIdKoaMiddleware } from './library/request-id/koa/middleware'

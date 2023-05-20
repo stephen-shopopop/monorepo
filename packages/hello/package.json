@@ -5,8 +5,7 @@
   "description": "",
   "main": "dist/index.js",
   "scripts": {
-    "start": "node dist/index.js",
-    "dev": "ts-node index.ts",
+    "example": "ts-node example/index.ts",
     "build": "rm -rf dist/* && tsc -p tsconfig.pkg.json"
   },
   "repository": {

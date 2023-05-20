@@ -2,16 +2,15 @@
   "name": "@stephen-shopopop/logger-functionnal",
   "version": "1.1.0",
   "description": "",
-  "main": "dist/logger-functionnal/index.js",
+  "main": "dist/index.js",
   "scripts": {
-    "start": "node dist/logger-functionnal/index.js",
-    "dev": "ts-node index.ts",
+    "example": "ts-node example/index.ts",
     "build": "rm -rf dist/* && tsc -p tsconfig.pkg.json"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
-  "types": "dist/logger-functionnal/index.d.ts",
+  "types": "dist/index.d.ts",
   "dependencies": {
     "@stephen-shopopop/request-context": "*",
     "pino": "^8.12.1"

@@ -3,7 +3,7 @@ import { Server } from 'http'
 import Koa, { Context, Next } from 'koa'
 import { AddressInfo } from 'net'
 import { addRequestIdKoaMiddleware, context } from '../index'
-import { REQUEST_ID_HEADER } from '../src/request-id/commons'
+import { REQUEST_ID_HEADER } from '../library/request-id/commons'
 
 let connection: Server | undefined
 

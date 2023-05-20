@@ -4,4 +4,4 @@ import pino from 'pino'
 // ⛔️ Typage: aucun typage strict protegant le passage d’arguments à la dependance
 const logger = pino({ level: process.env['LEVEL'] ?? 'info' })
 
-export default logger
+export { logger }

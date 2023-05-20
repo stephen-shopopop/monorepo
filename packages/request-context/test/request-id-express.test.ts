@@ -3,7 +3,7 @@ import express, { Express } from 'express'
 import { Server } from 'http'
 import { AddressInfo } from 'net'
 import { addRequestIdExpressMiddleware, context } from '../index'
-import { REQUEST_ID_HEADER } from '../src/request-id/commons'
+import { REQUEST_ID_HEADER } from '../library/request-id/commons'
 
 let connection: Server | undefined
 

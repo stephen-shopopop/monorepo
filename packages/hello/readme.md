@@ -47,9 +47,7 @@ Qualité et test de la librairie | no | cela revient à tester la librairie
 
 __nota:__ Dans certain cas cette methode est a priviligier, si la dependance ne possede qu´une methode (ou qu´une seul methode soit necessaire au projet) et sans configuration necessaire car elle apporte la simplicite et la facilite de mise en place.
 
-
 ## Contributing
 
-1. npm run start -  Start project
-2. npm run dev - Start project with ts-node (dev only)
-3. npm run build - Build ts
+1. npm run example - Start example with ts-node (dev only)
+2. npm run build - Build ts

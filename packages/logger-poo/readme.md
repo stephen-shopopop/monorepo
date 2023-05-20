@@ -48,6 +48,5 @@ La librairie offre un chargement de la configuration à chaud, ainsi le logger p
 
 ## Contributing
 
-1. npm run start -  Start project
-2. npm run dev - Start project with ts-node (dev only)
-3. npm run build - Build ts
+1. npm run example - Start example with ts-node (dev only)
+2. npm run build - Build ts
