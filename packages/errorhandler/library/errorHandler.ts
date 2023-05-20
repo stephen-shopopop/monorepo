@@ -1,11 +1,11 @@
 import { logger } from '@stephen-shopopop/logger-poo'
 import { HttpTerminator, createHttpTerminator } from 'http-terminator'
-import * as Http from 'node:http'
-import * as util from 'node:util'
+import Http from 'node:http'
+import { inspect } from 'node:util'
 import { AppError } from './appError'
 import { errorHandler } from './event'
 
-let httpServerRef: HttpTerminator | null
+let httpServerRef: HttpTerminator | undefined
 
 const terminateHttpServerAndExit = async (event: 'SIGINT' | 'SIGTERM'): Promise<void> => {
   logger.error(`App received ${event} event, try to gracefully close the server`)
@@ -32,7 +32,7 @@ const normalizeError = (errorToHandle: unknown): AppError => {
     return appError
   }
 
-  return new AppError(`Error Handler received a none error instance with type - ${typeof errorToHandle}, value - ${util.inspect(errorToHandle)}`)
+  return new AppError(`Error Handler received a none error instance with type - ${typeof errorToHandle}, value - ${inspect(errorToHandle)}`)
 }
 
 export const listenToErrorEvents = (httpServer: Http.Server): void => {
@@ -47,7 +47,7 @@ export const listenToErrorEvents = (httpServer: Http.Server): void => {
 
   process.on('SIGTERM', () => {
     terminateHttpServerAndExit('SIGTERM').catch(error => {
-      process.stderr.write(util.inspect(error))
+      process.stderr.write(inspect(error))
 
       process.exit(1)
     })
@@ -55,7 +55,7 @@ export const listenToErrorEvents = (httpServer: Http.Server): void => {
 
   process.on('SIGINT', () => {
     terminateHttpServerAndExit('SIGINT').catch(error => {
-      process.stderr.write(util.inspect(error))
+      process.stderr.write(inspect(error))
 
       process.exit(1)
     })
@@ -74,7 +74,7 @@ export const handleError = (errorToHandle: unknown): void => {
     }
   } catch (handlingError: unknown) {
     process.stdout.write('Error handler failed')
-    process.stdout.write(util.inspect(handlingError))
-    process.stdout.write(util.inspect(errorToHandle))
+    process.stdout.write(inspect(handlingError))
+    process.stdout.write(inspect(errorToHandle))
   }
 }
