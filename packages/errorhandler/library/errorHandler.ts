@@ -25,7 +25,7 @@ const normalizeError = (errorToHandle: unknown): AppError => {
   }
 
   if (errorToHandle instanceof Error) {
-    const appError = new AppError(errorToHandle.message)
+    const appError = new AppError(errorToHandle.message, 500, true, errorToHandle)
 
     if (errorToHandle.stack !== undefined) {
       appError.stack = errorToHandle.stack

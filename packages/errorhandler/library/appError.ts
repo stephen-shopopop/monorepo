@@ -6,9 +6,10 @@ export class AppError extends Error {
   constructor (
     public override message: string,
     public HTTPStatus: number = 500,
-    public isTrusted = true
+    public isTrusted = true,
+    public override cause?: unknown
   ) {
-    super(message)
+    super(message, { cause })
 
     Error.captureStackTrace(this, AppError)
 
