@@ -2,19 +2,19 @@ import convict from 'convict'
 
 let convictConfigurationProvider: convict.Config<any> | undefined
 
-export function initializeAndValidate (schema: any): void {
+export const initializeAndValidate = (schema: any): void => {
   convictConfigurationProvider = convict(schema)
   convictConfigurationProvider.validate()
 }
 
-export function reset (): void {
+export const reset = (): void => {
   convictConfigurationProvider = undefined
 }
 
-export function getValue (keyName: string): string {
+export const getValue = (key: string): string => {
   if (convictConfigurationProvider === undefined) {
     throw new Error('Configuration has not been initialized yet')
   }
   // @ts-expect-error
-  return convictConfigurationProvider.get(keyName) as string
+  return convictConfigurationProvider.get(key) as string
 }

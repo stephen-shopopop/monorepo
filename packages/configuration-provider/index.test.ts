@@ -4,7 +4,7 @@ describe('getValue function', () => {
   beforeEach(() => {
     configurationProvider.reset()
   })
-  test('When a default value exist in the schema, then get this value in response', () => {
+  test('When a default value exist in the schema then get this value', () => {
     // Arrange
     configurationProvider.initializeAndValidate({
       port: {
@@ -20,7 +20,7 @@ describe('getValue function', () => {
     expect(receivedValue).toBe(3000)
   })
 
-  test('When a key does not exist, then an exception should be thrown', () => {
+  test('When a key does not exist then an exception should be thrown', () => {
     // Arrange
     configurationProvider.initializeAndValidate({
       port: {
@@ -38,7 +38,7 @@ describe('getValue function', () => {
     expect(functionUnderTest).toThrow()
   })
 
-  test('When there is default but ENV VAR override exists, then the ENV VAR value is returned', () => {
+  test('When there is default but ENV VAR override exists then the ENV VAR value is returned', () => {
     // Arrange
     process.env['LOGGER_LEVEL'] = 'the-new-value'
     configurationProvider.initializeAndValidate({
@@ -59,7 +59,7 @@ describe('getValue function', () => {
     process.env['LOGGER_LEVEL'] = undefined
   })
 
-  test('When trying to get before initializing, then an exception should be thrown', () => {
+  test('When trying to get before initializing then an exception should be thrown', () => {
     // Arrange
     // No initialization
 
@@ -75,13 +75,13 @@ describe('getValue function', () => {
 })
 
 describe('initialize function', () => {
-  test('When initializing without config data, then an exception should be thrown', () => {
+  test('When initializing without config data then an exception should be thrown', () => {
     expect(
       configurationProvider.initializeAndValidate.bind(null, null)
     ).toThrow()
   })
 
-  test('When a non-null key without default value is null, then an exception should be thrown', () => {
+  test('When a non-null key without default value is null then an exception should be thrown', () => {
     // Arrange
     const configWithNullMandatoryKey = {
       port: {
@@ -101,7 +101,7 @@ describe('initialize function', () => {
     expect(functionUnderTest).toThrow()
   })
 
-  test('When a numerical value has string, then an exception should be thrown', () => {
+  test('When a numerical value has string then an exception should be thrown', () => {
     // Arrange
     process.env['PORT'] = 'Im-a-string-not-number'
     const configWithTypeMismatch = {
