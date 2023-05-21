@@ -1,0 +1,19 @@
+{
+  "name": "@stephen-shopopop/configuration-provider",
+  "version": "1.0.0",
+  "description": "",
+  "main": "dist/index.js",
+  "scripts": {
+    "build": "rm -rf dist/* && tsc -p tsconfig.pkg.json"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "types": "dist/index.d.ts",
+  "dependencies": {
+    "convict": "^6.2.4"
+  },
+  "devDependencies": {
+    "@types/convict": "^6.1.1"
+  }
+}
