@@ -45,6 +45,7 @@ async function main () {
   await fs.writeJSON(`./packages/${packageName}/tsconfig.pkg.json`, {
     extends: '../../tsconfig.build.json',
     compilerOptions: {
+      declaration: true,
       outDir: './dist/'
     },
     include: [
@@ -62,17 +63,15 @@ async function main () {
 [![macOS](https://svgshare.com/i/ZjP.svg)](https://svgshare.com/i/ZjP.svg)
 [![Visual Studio Code](https://img.shields.io/badge/--007ACC?logo=visual%20studio%20code&logoColor=ffffff)](https://code.visualstudio.com/)
 
-# nodejs typescript template
+# ${packageName}
 
 ## Description
 
-Template nodejs typescript
+${packageName} package
 
 ## Contributing
 
-1. npm run start -  Start project
-2. npm run dev - Start project with ts-node (dev only)
-3. npm run build - Build ts
+1. npm run build - Build ts
 `)
 
   // Generate index.ts
@@ -81,16 +80,22 @@ export function hello (name: string): string {
   return 'hello ' + name
 }
 
-console.log(hello(' you'))
 `)
 
   // Generate index.test.ts
   await fs.outputFile(`./packages/${packageName}/index.test.ts`, `import { describe, expect, test } from '@jest/globals'
 import { hello } from './index'
 
-describe('[index/hello] hello()', () => {
-  test('return "hello shopopop" when hello("you")', () => {
-    expect(hello('you')).toEqual('hello you')
+describe('[${packageName}] hello()', () => {
+  test('When hello("john") then return "hello john', () => {
+    // Arrange
+    const name = 'john'
+
+    // Act
+    const message = hello(name)
+
+    // Assert
+    expect(message).toBe('hello you')
   })
 })
 `)
@@ -100,21 +105,17 @@ describe('[index/hello] hello()', () => {
   pkg.types = 'dist/index.d.ts'
   pkg.main = 'dist/index.js'
   pkg.scripts = {
-    start: 'node dist/index.js',
-    dev: 'ts-node index.ts',
     build: 'rm -rf dist/* && tsc -p tsconfig.pkg.json'
   }
   pkg.description = ''
 
   await fs.writeJSON(`./packages/${packageName}/package.json`, pkg, { spaces: 2 })
 
-  logger.info(`\n npm install pino --workspace=@${scopeName}/${packageName}`)
-
-  const cmdPkgs = `npm install pino --workspace=@${scopeName}/${packageName}`
-  execSync(cmdPkgs.toString(), {
-    cwd: __dirname,
-    stdio: 'inherit'
-  })
+  // const cmdPkgs = `npm install pino --workspace=@${scopeName}/${packageName}`
+  // execSync(cmdPkgs.toString(), {
+  //   cwd: __dirname,
+  //   stdio: 'inherit'
+  // })
 }
 
 main()
