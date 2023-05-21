@@ -132,4 +132,4 @@ export enum HTTPStatus {
   NetworkAuthenticationRequired = 511,
 }
 
-export const httpStatusCode = (HTTPStatus: HTTPStatus | number): string => STATUS_CODES[HTTPStatus] ?? 'Unknown error'
+export const httpStatusCode = (HTTPStatus: number): string => STATUS_CODES[HTTPStatus] ?? 'Unknown error'

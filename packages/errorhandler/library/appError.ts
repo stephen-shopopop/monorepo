@@ -6,7 +6,7 @@ export class AppError extends Error {
 
   constructor (
     public override message: string,
-    public HttpStatus: HTTPStatus | number = HTTPStatus.InternalServerError,
+    public HttpStatus: number = HTTPStatus.InternalServerError,
     public isTrusted = true,
     public override cause?: unknown
   ) {
