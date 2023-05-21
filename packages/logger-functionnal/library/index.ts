@@ -1,5 +1,5 @@
 import { context } from '@stephen-shopopop/request-context'
-import { Logger, LoggerConfiguration } from './definitions'
+import type { Logger, LoggerConfiguration } from './definitions'
 import pinoLogger, { PinoLogger, PinoLoggerProps } from './pino.logger'
 
 const handleLogger = (message: string | object, metadata?: object): PinoLoggerProps => {

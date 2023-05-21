@@ -1,5 +1,5 @@
 import { LoggerOptions, pino, Logger as PinoLoggerImpl } from 'pino'
-import { LoggerConfiguration } from './definitions'
+import type { LoggerConfiguration } from './definitions'
 import { match, when } from './patterns'
 
 export interface PinoLogger {

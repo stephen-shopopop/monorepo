@@ -1,6 +1,6 @@
 import { context } from '@stephen-shopopop/request-context'
 import PinoLogger from './pino.logger'
-import { Logger, LoggerConfiguration } from './types'
+import type { Logger, LoggerConfiguration } from './types'
 
 // ✅ Use polymorphisme: on implement l´interface Logger et on ajoute une deuxieme couche d'isolation reservé a l'usage
 // ✅ Pas d´heritage de la classe pinoLogger afin de decoupler l´usage et l'isolation de la dependance (separation des responsabilites)

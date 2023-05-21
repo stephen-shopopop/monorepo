@@ -1,5 +1,5 @@
 import { LoggerOptions, pino, Logger as PinoLoggerImpl } from 'pino'
-import { LOG_LEVELS, Logger } from './types'
+import type { LOG_LEVELS, Logger } from './types'
 
 // ✅ Use polymorphisme: on implemente l´interface Logger
 // ✅ Isolation partielle de la dependance (couplage sur les methodes de la dependance)
