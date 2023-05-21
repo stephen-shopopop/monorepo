@@ -1,4 +1,4 @@
-import { IncomingMessage, ServerResponse } from 'http'
+import type { IncomingMessage, ServerResponse } from 'http'
 import { context } from '../../context'
 import { REQUEST_ID_HEADER, generateRequestId } from '../commons'
 

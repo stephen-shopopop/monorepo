@@ -1,5 +1,5 @@
 import { EventEmitter } from 'node:events'
-import { AppError } from './appError'
+import type { AppError } from './appError'
 
 type ListenerSignature<L> = {
   // eslint-disable-next-line @typescript-eslint/no-explicit-any

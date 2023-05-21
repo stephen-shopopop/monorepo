@@ -1,6 +1,8 @@
 import { logger } from '@stephen-shopopop/logger-poo'
 import { HttpTerminator, createHttpTerminator } from 'http-terminator'
-import Http from 'node:http'
+import type { Server as HttpServer } from 'node:http'
+import type { Http2SecureServer } from 'node:http2'
+import type { Server as HttpsServer } from 'node:https'
 import { inspect } from 'node:util'
 import { AppError } from './appError'
 import { errorHandler } from './event'
@@ -35,7 +37,7 @@ const normalizeError = (errorToHandle: unknown): AppError => {
   return new AppError(`Error Handler received a none error instance with type - ${typeof errorToHandle}, value - ${inspect(errorToHandle)}`)
 }
 
-export const listenToErrorEvents = (httpServer: Http.Server): void => {
+export const listenToErrorEvents = (httpServer: Http2SecureServer | HttpServer | HttpsServer): void => {
   httpServerRef = createHttpTerminator({
     gracefulTerminationTimeout: Number(process.env['GRACEFUL_TIMEOUT_IN_MS'] ?? '0'),
     server: httpServer
