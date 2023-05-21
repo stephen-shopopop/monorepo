@@ -10,6 +10,10 @@
 
 configuration-provider package
 
+## Documentation
+
+- [convict](https://github.com/mozilla/node-convict/tree/master/packages/convict)
+
 ## Contributing
 
 1. npm run build - Build ts
