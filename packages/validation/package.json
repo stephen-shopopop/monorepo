@@ -1,0 +1,16 @@
+{
+  "name": "@stephen-shopopop/validation",
+  "version": "1.0.0",
+  "description": "",
+  "main": "dist/index.js",
+  "scripts": {
+    "build": "rm -rf dist/* && tsc -p tsconfig.pkg.json"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "types": "dist/index.d.ts",
+  "dependencies": {
+    "zod": "^3.21.4"
+  }
+}
