@@ -37,10 +37,10 @@ const normalizeError = (errorToHandle: unknown): AppError => {
   return new AppError(`Error Handler received a none error instance with type - ${typeof errorToHandle}, value - ${inspect(errorToHandle)}`)
 }
 
-export const listenToErrorEvents = (httpServer: Http2SecureServer | HttpServer | HttpsServer): void => {
+export const listenToErrorEvents = (server: Http2SecureServer | HttpServer | HttpsServer): void => {
   httpServerRef = createHttpTerminator({
     gracefulTerminationTimeout: Number(process.env['GRACEFUL_TIMEOUT_IN_MS'] ?? '0'),
-    server: httpServer
+    server
   })
 
   process.on('uncaughtException', (error) => handleError(error))
