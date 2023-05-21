@@ -1,4 +1,5 @@
 import { logger } from '@stephen-shopopop/logger-poo'
+import { HTTPStatus } from '@stephen-shopopop/http-status'
 import { HttpTerminator, createHttpTerminator } from 'http-terminator'
 import type { Server as HttpServer } from 'node:http'
 import type { Http2SecureServer } from 'node:http2'
@@ -25,7 +26,7 @@ const normalizeError = (errorToHandle: unknown): AppError => {
   }
 
   if (errorToHandle instanceof Error) {
-    const appError = new AppError(errorToHandle.message, 500, true, errorToHandle)
+    const appError = new AppError(errorToHandle.message, HTTPStatus.InternalServerError, true, errorToHandle)
 
     if (errorToHandle.stack !== undefined) {
       appError.stack = errorToHandle.stack
