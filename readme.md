@@ -8,13 +8,15 @@
 [![pages-build-deployment](https://github.com/stephen-shopopop/logger/actions/workflows/pages/pages-build-deployment/badge.svg)](https://github.com/stephen-shopopop/logger/actions/workflows/pages/pages-build-deployment)
 [![Tests](https://github.com/stephen-shopopop/logger/actions/workflows/test.yml/badge.svg)](https://github.com/stephen-shopopop/logger/actions/workflows/test.yml)
 
-# Logger
+# Monorepo
 
 ## Description
 
-Les differentes methodes pour creer une librairie afin d´isoler une dependances.
+Les bonnes pratique d´un projet en monorepo
 
-## Etude de cas
+## Etude de cas: logger
+
+Les differentes methodes pour creer une librairie afin d´isoler une dependances.
 
 Dans ce projet, nous aborderons la construction d´une librairie de log dit "logger".
 La dependance [pino](https://getpino.io) sera utilise a titre d´exemple.
@@ -61,7 +63,7 @@ La librairie "logger" doit posséder:
 - Doit posséder un horodatage et une profondeur acceptable sur les objets.
 - Doit avoir des logs comprehensible par un developpeur
 
-## Methodes
+## Logger les méthodes
 
 - [simple comme bonjour](https://github.com/stephen-shopopop/logger/tree/main/packages/hello) - programmation imperative
 - [hello the world - poo](https://github.com/stephen-shopopop/logger/tree/main/packages/logger-poo) - programmation orienté objet
