@@ -12,7 +12,7 @@
 
 ## Description
 
-Les bonnes pratique d´un projet en monorepo
+Les bonnes pratiques d´un projet en monorepo
 
 ## Etude de cas: logger
 
