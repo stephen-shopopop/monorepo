@@ -8,6 +8,24 @@
 
 ## Description
 
+Enum of http status for typescript
+
+```ts
+import { HTTPStatus } from '@stephen-shopopop/http-status'
+
+console.log(HTTPStatus.InternalServerError)
+// result: 500
+```
+
+_httpStatusCode()_:
+
+```ts
+import { httpStatusCode } from '@stephen-shopopop/http-status'
+
+console.log(httpStatusCode(500))
+// result: "Internal Server Error"
+```
+
 ## Contributing
 
 1. npm run build - Build ts
