@@ -8,7 +8,7 @@
 
 ## Description
 
-configuration-provider package
+configuration-provider package for all typescript configuration (strict or not strict)
 
 create config.ts file
 
@@ -27,7 +27,7 @@ export default {
 Usage
 
 ```ts
-import * as configurationProvider from '@stephen-shopopop/configuration-provider'
+import configurationProvider from '@stephen-shopopop/configuration-provider'
 import configurationSchema from '../../config'
 
 // Initialize configuration provider

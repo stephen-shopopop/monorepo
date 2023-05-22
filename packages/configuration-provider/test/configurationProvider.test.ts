@@ -1,4 +1,4 @@
-import * as configurationProvider from './index'
+import { configurationProvider } from '../index'
 
 describe('getValue function', () => {
   beforeEach(() => {
