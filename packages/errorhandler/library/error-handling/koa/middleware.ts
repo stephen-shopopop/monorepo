@@ -1,6 +1,7 @@
 import { HTTPStatus, httpStatusCode } from '@stephen-shopopop/http-status'
 import type { Context, Next } from 'koa'
 import { AppError } from '../../appError'
+import { handleError } from '../../errorHandler'
 
 /**
  * This is an koa middleware
@@ -12,6 +13,9 @@ export async function defineErrorHandlingKoaMiddleware (
   try {
     await next()
   } catch (error) {
+    // ✅ Pass all error to a centralized error handler so they get treated equally
+    handleError(error)
+
     if (error instanceof AppError) {
       ctx.response.status = error.HttpStatus
       ctx.response.body = {
