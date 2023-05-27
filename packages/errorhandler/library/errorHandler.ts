@@ -47,21 +47,15 @@ export const listenToErrorEvents = (server: Http2SecureServer | HttpServer | Htt
 
   process.on('unhandledRejection', (reason) => handleError(reason))
 
-  process.on('SIGTERM', () => {
-    terminateHttpServerAndExit('SIGTERM').catch(error => {
-      process.stderr.write(inspect(error))
+  for (const signal of ['SIGTERM', 'SIGINT'] as const) {
+    process.on(signal, () => {
+      terminateHttpServerAndExit(signal).catch(error => {
+        process.stderr.write(inspect(error))
 
-      process.exit(1)
+        process.exit(1)
+      })
     })
-  })
-
-  process.on('SIGINT', () => {
-    terminateHttpServerAndExit('SIGINT').catch(error => {
-      process.stderr.write(inspect(error))
-
-      process.exit(1)
-    })
-  })
+  }
 }
 
 export const handleError = (errorToHandle: unknown): void => {

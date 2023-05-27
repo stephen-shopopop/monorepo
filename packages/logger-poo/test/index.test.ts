@@ -1,5 +1,5 @@
 import sinon from 'sinon'
-import { logger } from '../library'
+import { logger } from '../index'
 
 beforeEach(() => {
   process.env['NODE_ENV'] = ''
