@@ -3,8 +3,8 @@ import axios, { AxiosInstance } from 'axios'
 import express, { Express } from 'express'
 import { Server } from 'http'
 import { AddressInfo } from 'net'
-import { AppError } from '../appError'
-import { defineErrorStyleExpressMiddleware } from '../error-handling/express/middleware'
+import { AppError } from '../library/appError'
+import { defineErrorStyleExpressMiddleware } from '../library/error-handling/express/middleware'
 
 let connection: Server | undefined
 

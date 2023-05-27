@@ -3,8 +3,8 @@ import axios, { AxiosInstance } from 'axios'
 import { Server } from 'http'
 import Koa, { Context } from 'koa'
 import { AddressInfo } from 'net'
-import { AppError } from '../appError'
-import { defineErrorHandlingKoaMiddleware } from '../error-handling/koa/middleware'
+import { AppError } from '../library/appError'
+import { defineErrorHandlingKoaMiddleware } from '../library/error-handling/koa/middleware'
 
 let connection: Server | undefined
 
