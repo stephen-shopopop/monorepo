@@ -1,5 +1,5 @@
-import { context } from '@stephen-shopopop/request-context'
 import { HTTPStatus } from '@stephen-shopopop/http-status'
+import { context } from '@stephen-shopopop/request-context'
 
 export class AppError extends Error {
   readonly context: Record<PropertyKey, unknown> | undefined
@@ -8,7 +8,7 @@ export class AppError extends Error {
     public override message: string,
     public HttpStatus: number = HTTPStatus.InternalServerError,
     public isTrusted = true,
-    public override cause?: unknown
+    public override cause?: object
   ) {
     super(message, { cause })
 

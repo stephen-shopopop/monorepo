@@ -1,12 +1,11 @@
-import { logger } from '@stephen-shopopop/logger-poo'
 import { HTTPStatus } from '@stephen-shopopop/http-status'
+import { logger } from '@stephen-shopopop/logger-poo'
 import { HttpTerminator, createHttpTerminator } from 'http-terminator'
 import type { Server as HttpServer } from 'node:http'
 import type { Http2SecureServer } from 'node:http2'
 import type { Server as HttpsServer } from 'node:https'
 import { inspect } from 'node:util'
 import { AppError } from './appError'
-import { errorHandler } from './event'
 
 let httpServerRef: HttpTerminator | undefined
 
@@ -70,7 +69,6 @@ export const handleError = (errorToHandle: unknown): void => {
     const appError = normalizeError(errorToHandle)
 
     logger.error(appError)
-    errorHandler.emit('error', appError)
 
     if (!appError.isTrusted) {
       process.kill(process.pid, 'SIGTERM')

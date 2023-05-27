@@ -42,6 +42,7 @@ configurationProvider.getValue('port')
 ## Documentation
 
 - [convict](https://github.com/mozilla/node-convict/tree/master/packages/convict)
+- [znv](https://github.com/lostfictions/znv)
 
 ## Contributing
 
