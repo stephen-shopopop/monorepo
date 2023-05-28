@@ -15,7 +15,7 @@ errorHandler package
 usage:
 
 ```ts
-import { metricsChannek } from '@stephen-shopopop/errorHandler'
+import { metricsChannel } from '@stephen-shopopop/errorHandler'
 
 function onMessage (message: unknown) {
   try {
