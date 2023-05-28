@@ -38,7 +38,7 @@ const normalizeError = (errorToHandle: unknown): AppError => {
   return new AppError(`Error Handler received a none error instance with type - ${typeof errorToHandle}, value - ${inspect(errorToHandle)}`)
 }
 
-export const metricsChannel = diagnostics_channel.channel('app-metrics')
+export const metricsChannel = diagnostics_channel.channel(Symbol('app-metrics'))
 
 export const listenToErrorEvents = (server: Http2SecureServer | HttpServer | HttpsServer): void => {
   httpServerRef = createHttpTerminator({
