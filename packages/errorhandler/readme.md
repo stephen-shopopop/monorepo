@@ -8,6 +8,36 @@
 
 ## Description
 
+errorHandler package
+
+### metricsChannel
+
+usage:
+
+```ts
+import { metricsChannek } from '@stephen-shopopop/errorHandler'
+
+function onMessage (message: unknown) {
+  try {
+    // Received data
+  } catch { /** */ }
+}
+
+// Subscribe to the channel
+metricsChannel.subscribe(onMessage)
+
+// Check if the channel has an active subscriber
+if (metricsChannel.hasSubscribers) {
+  // Publish data to the channel
+  metricsChannek.publish({
+    some: 'data'
+  })
+}
+
+// Unsubscribe from the channel
+metricsChannel.unsubscribe(onMessage)
+```
+
 ## Contributing
 
 1. npm run build - Build ts
