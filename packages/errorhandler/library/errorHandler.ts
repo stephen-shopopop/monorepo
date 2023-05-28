@@ -55,7 +55,7 @@ const normalizeError = (errorToHandle: unknown): AppError => {
  * // Check if the channel has an active subscriber
  * if (metricsChannel.hasSubscribers) {
  *   // Publish data to the channel
- *   channel.publish({
+ *   metricsChannel.publish({
  *     some: 'data'
  *   })
  * }
