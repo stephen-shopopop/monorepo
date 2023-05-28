@@ -1,6 +1,7 @@
 import { HTTPStatus } from '@stephen-shopopop/http-status'
 import { logger } from '@stephen-shopopop/logger-poo'
 import { HttpTerminator, createHttpTerminator } from 'http-terminator'
+import diagnostics_channel from 'node:diagnostics_channel'
 import type { Server as HttpServer } from 'node:http'
 import type { Http2SecureServer } from 'node:http2'
 import type { Server as HttpsServer } from 'node:https'
@@ -37,6 +38,8 @@ const normalizeError = (errorToHandle: unknown): AppError => {
   return new AppError(`Error Handler received a none error instance with type - ${typeof errorToHandle}, value - ${inspect(errorToHandle)}`)
 }
 
+export const metricsChannel = diagnostics_channel.channel('app-metrics')
+
 export const listenToErrorEvents = (server: Http2SecureServer | HttpServer | HttpsServer): void => {
   httpServerRef = createHttpTerminator({
     gracefulTerminationTimeout: Number(process.env['GRACEFUL_TIMEOUT_IN_MS'] ?? '0'),
@@ -63,6 +66,10 @@ export const handleError = (errorToHandle: unknown): void => {
     const appError = normalizeError(errorToHandle)
 
     logger.error(appError)
+
+    if (metricsChannel.hasSubscribers) {
+      metricsChannel.publish(AppError)
+    }
 
     if (!appError.isTrusted) {
       process.kill(process.pid, 'SIGTERM')
