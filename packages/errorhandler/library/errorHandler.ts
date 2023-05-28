@@ -38,6 +38,31 @@ const normalizeError = (errorToHandle: unknown): AppError => {
   return new AppError(`Error Handler received a none error instance with type - ${typeof errorToHandle}, value - ${inspect(errorToHandle)}`)
 }
 
+/**
+ * metricsChannel
+ *
+ * ```ts
+ * function onMessage(message: unknown) {
+ *  // Use try catch to evict unhandleExpection
+ *  try {
+ *   // Received data
+ *  } catch { }
+ * }
+ *
+ * // Subscribe to the channel
+ * metricsChannel.subscribe(onMessage)
+ * 
+ * // Check if the channel has an active subscriber
+ * if (metricsChannel.hasSubscribers) {
+ *   // Publish data to the channel
+ *   channel.publish({
+ *     some: 'data'
+ *   })
+ * }
+ * 
+ * // Unsubscribe from the channel
+ * metricsChannel.unsubscribe(onMessage);
+ */
 export const metricsChannel = diagnostics_channel.channel(Symbol('app-metrics'))
 
 export const listenToErrorEvents = (server: Http2SecureServer | HttpServer | HttpsServer): void => {
