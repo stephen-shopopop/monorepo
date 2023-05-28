@@ -17,9 +17,19 @@ usage:
 ```ts
 import { metricsChannel } from '@stephen-shopopop/errorHandler'
 
-function onMessage (message: unknown) {
+function onMessage (error: unknown) {
   try {
     // Received data
+    if (error instanceof AppError) {
+       // Access to all properies AppError
+       // error.name: error name (AppError)
+       // error.message: error message
+       // error.HttpStatus: http status code
+       // error.isTrusted: error is trusted
+       // error.cause: cause of error (it´s possible is an othe Error or object)
+       // error.stack: error stack trace
+       // error.context: usage context (depends of package request-context)
+    }
   } catch { /** */ }
 }
 
