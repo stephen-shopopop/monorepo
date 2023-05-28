@@ -49,19 +49,8 @@ const normalizeError = (errorToHandle: unknown): AppError => {
  *  } catch { }
  * }
  *
- * // Subscribe to the channel
+ * // Subscribe to the metrics channel
  * metricsChannel.subscribe(onMessage)
- * 
- * // Check if the channel has an active subscriber
- * if (metricsChannel.hasSubscribers) {
- *   // Publish data to the channel
- *   metricsChannel.publish({
- *     some: 'data'
- *   })
- * }
- * 
- * // Unsubscribe from the channel
- * metricsChannel.unsubscribe(onMessage);
  */
 export const metricsChannel = diagnostics_channel.channel(Symbol('app-metrics'))
 
