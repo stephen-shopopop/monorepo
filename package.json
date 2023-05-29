@@ -1,7 +1,7 @@
 {
-  "name": "@stephen-shopopop/logger",
+  "name": "@stephen-shopopop/monorepo",
   "version": "1.0.2",
-  "description": "Works logger",
+  "description": "Works monorepo",
   "private": true,
   "engines": {
     "node": ">=18.15.0",
