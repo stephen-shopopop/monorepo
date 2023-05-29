@@ -12,6 +12,11 @@ jwt-verifier package
 
 Once your project is off a POC stage, change your JWT flow to async using JWKS: [jwks-rsa](https://www.npmjs.com/package/jwks-rsa)
 
+JWT libraries nodejs - [reference](https://jwt.io/libraries?language=Node.js)
+
+- [jsonwebtoken](https://github.com/auth0/node-jsonwebtoken)
+- [jose](https://github.com/panva/jose)
+
 ## Contributing
 
 1. npm run build - Build ts
