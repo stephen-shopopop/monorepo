@@ -4,7 +4,7 @@ import type express from 'express'
 import jwt, { VerifyErrors } from 'jsonwebtoken'
 import { JWTOptions } from '../definitions'
 
-export const jwtVerifierMiddleware = (
+export const jwtVerifierExpressMiddleware = (
   options: JWTOptions
 ): (req: express.Request, res: express.Response, next: express.NextFunction) => void => {
   return function middleware (

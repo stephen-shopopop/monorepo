@@ -1,1 +1,1 @@
-export { jwtVerifierMiddleware } from './library/express/middleware'
+export { jwtVerifierExpressMiddleware } from './library/express/middleware'
