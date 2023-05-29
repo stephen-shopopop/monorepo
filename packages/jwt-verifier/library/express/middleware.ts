@@ -41,7 +41,7 @@ export const jwtVerifierExpressMiddleware = (
       token,
       options.secret,
       (err: VerifyErrors | null, jwtContent: any) => {
-        if (err != null) {
+        if (err !== null) {
           const error = new AppError('JWT - invalid or expired token', 401, true, err)
           next(error)
           return
