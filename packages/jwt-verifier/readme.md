@@ -19,7 +19,8 @@ JWT libraries nodejs - [reference](https://jwt.io/libraries?language=Node.js):
 
 Json web token claims:
 
-[claims](https://auth0.com/docs/secure/tokens/json-web-tokens/json-web-token-claims)
+- [claims](https://auth0.com/docs/secure/tokens/json-web-tokens/json-web-token-claims)
+- [openId](https://openid.net/specs/openid-connect-core-1_0.html#StandardClaims)
 
 ## Contributing
 
