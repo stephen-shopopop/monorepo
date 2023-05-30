@@ -1,5 +1,5 @@
 import { z } from '@stephen-shopopop/validation'
-import { AppError } from 'packages/errorhandler'
+import { AppError } from '@stephen-shopopop/errorhandler'
 
 export const claimsUserSchema = z.object({
   email: z.string().email(),
