@@ -13,6 +13,7 @@
   "dependencies": {
     "@stephen-shopopop/errorhandler": "*",
     "@stephen-shopopop/request-context": "*",
+    "@stephen-shopopop/validation": "*",
     "jsonwebtoken": "^9.0.0"
   },
   "devDependencies": {
