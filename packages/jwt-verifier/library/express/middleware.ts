@@ -2,7 +2,7 @@ import { AppError } from '@stephen-shopopop/errorhandler'
 import { context } from '@stephen-shopopop/request-context'
 import type express from 'express'
 import jwt, { VerifyErrors } from 'jsonwebtoken'
-import { userClaimsJwtverfier } from '../commons'
+import { userClaimsJwtVerifier } from '../commons'
 import { JWTOptions } from '../definitions'
 
 /**
@@ -52,7 +52,7 @@ export const jwtVerifierExpressMiddleware = (
         }
 
         try {
-          const jwtClaims = userClaimsJwtverfier(jwtContent.data)
+          const jwtClaims = userClaimsJwtVerifier(jwtContent.data)
 
           // Add user on context
           context.set('user', jwtClaims)
