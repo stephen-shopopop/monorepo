@@ -8,7 +8,7 @@ export const claimsUserSchema = z.object({
   sub: z.string().uuid().or(z.number().positive().gt(0))
 })
 
-export const userClaimsJwtverfier = (claimsData: unknown): z.infer<typeof claimsUserSchema> => {
+export const userClaimsJwtverifier = (claimsData: unknown): z.infer<typeof claimsUserSchema> => {
   const claimsVerifier = claimsUserSchema.safeParse(claimsData)
 
   if (!claimsVerifier.success) {
