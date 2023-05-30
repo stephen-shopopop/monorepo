@@ -1,7 +1,7 @@
 import { AppError } from '@stephen-shopopop/errorhandler'
 import jwt, { VerifyErrors } from 'jsonwebtoken'
 import type { Context, Next } from 'koa'
-import { context } from 'packages/request-context'
+import { context } from '@stephen-shopopop/request-context'
 import { userClaimsJwtVerifier } from '../commons'
 import { JWTOptions } from '../definitions'
 
