@@ -2,7 +2,7 @@ import { AppError } from '@stephen-shopopop/errorhandler'
 import jwt, { VerifyErrors } from 'jsonwebtoken'
 import type { Context, Next } from 'koa'
 import { context } from 'packages/request-context'
-import { userClaimsJwtverfier } from '../commons'
+import { userClaimsJwtVerifier } from '../commons'
 import { JWTOptions } from '../definitions'
 
 /**
@@ -41,7 +41,7 @@ export const jwtVerifierExpressMiddleware = async (
           throw new AppError('JWT - verify error', 401, true, err)
         }
 
-        const jwtClaims = userClaimsJwtverfier(jwtContent.data)
+        const jwtClaims = userClaimsJwtVerifier(jwtContent.data)
 
         // Add user on context
         context.set('user', jwtClaims)
