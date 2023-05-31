@@ -1,14 +1,14 @@
 import { AppError } from '@stephen-shopopop/errorhandler'
+import { context } from '@stephen-shopopop/request-context'
 import jwt, { VerifyErrors } from 'jsonwebtoken'
 import type { Context, Next } from 'koa'
-import { context } from '@stephen-shopopop/request-context'
 import { userClaimsJwtVerifier } from '../commons'
 import { JWTOptions } from '../definitions'
 
 /**
  * This is an koa middleware
  */
-export const jwtVerifierExpressMiddleware = async (
+export const jwtVerifierEKoaMiddleware = async (
   options: JWTOptions
 ): Promise<(ctx: Context, next: Next) => Promise<void>> => {
   return async function jwtMiddleware (ctx: Context, next: Next): Promise<void> {
