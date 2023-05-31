@@ -71,7 +71,7 @@ ${serviceName} service
 ## Contributing
 
 1. npm run start - start app
-2. npm run dev - start app en dev mode
+2. npm run dev - start app on dev mode
 1. npm run build - Build ts
 `)
 
