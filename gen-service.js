@@ -77,24 +77,24 @@ ${serviceName} service
 
   // Generate index.ts
   await fs.outputFile(`./services/${serviceName}/start.ts`, `import { AppError, handleError } from '@stephen-shopopop/errorhandler'
-  import { logger } from '@stephen-shopopop/logger-poo'
-  
-  async function start (): Promise<unknown> {
-    // 🦉 Array of entry point is being used to support more entry-points kinds like message queue, scheduled job,
-    return await Promise.all([])
-  }
-  
-  start()
-    .then(() => {
-      logger.info('The app has started successfully')
-    })
-    .catch((error) => {
-      // ️️️✅ Best Practice: A failure during startup is catastrophic and should lead to process exit (you may retry before)
-      // Consequently, we flag the error as catastrophic
-      handleError(
-        new AppError('startup-failure', 500, false, error)
-      )
-    })
+import { logger } from '@stephen-shopopop/logger-poo'
+
+async function start (): Promise<unknown> {
+  // 🦉 Array of entry point is being used to support more entry-points kinds like message queue, scheduled job,
+  return await Promise.all([])
+}
+
+start()
+  .then(() => {
+    logger.info('The app has started successfully')
+  })
+  .catch((error) => {
+    // ️️️✅ Best Practice: A failure during startup is catastrophic and should lead to process exit (you may retry before)
+    // Consequently, we flag the error as catastrophic
+    handleError(
+      new AppError('startup-failure', 500, false, error)
+    )
+  })
 
 `)
 
@@ -103,7 +103,7 @@ ${serviceName} service
   pkg.types = 'dist/index.d.ts'
   pkg.main = 'dist/index.js'
   pkg.scripts = {
-    start: 'PRETTY_PRINT=false node .dist/start.js',
+    start: 'node ./dist/start.js',
     dev: 'PRETTY_PRINT=true ts-node start.ts',
     build: 'rm -rf dist/* && tsc -p tsconfig.pkg.json'
   }
