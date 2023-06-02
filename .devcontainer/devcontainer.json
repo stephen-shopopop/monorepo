@@ -20,7 +20,8 @@
 				"aaron-bond.better-comments",
 				"nicoespeon.abracadabra",
 				"mutantdino.resourcemonitor",
-				"ckolkman.vscode-postgres"
+				"ckolkman.vscode-postgres",
+				"vivaxy.vscode-conventional-commits"
 			],
 			"settings": {
 				"prettier.enable": false,
