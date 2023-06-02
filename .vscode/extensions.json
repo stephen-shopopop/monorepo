@@ -5,6 +5,8 @@
     "usernamehw.errorlens",
     "eamodio.gitlens",
     "aaron-bond.better-comments",
-    "nicoespeon.abracadabra"
+    "nicoespeon.abracadabra",
+    "ckolkman.vscode-postgres",
+		"vivaxy.vscode-conventional-commits"
   ]
 }
