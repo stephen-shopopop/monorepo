@@ -19,7 +19,8 @@
 				"eamodio.gitlens",
 				"aaron-bond.better-comments",
 				"nicoespeon.abracadabra",
-				"mutantdino.resourcemonitor"
+				"mutantdino.resourcemonitor",
+				"ckolkman.vscode-postgres"
 			],
 			"settings": {
 				"prettier.enable": false,
