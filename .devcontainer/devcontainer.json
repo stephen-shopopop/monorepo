@@ -21,7 +21,9 @@
 				"nicoespeon.abracadabra",
 				"mutantdino.resourcemonitor",
 				"ckolkman.vscode-postgres",
-				"vivaxy.vscode-conventional-commits"
+				"vivaxy.vscode-conventional-commits",
+				"42Crunch.vscode-openapi",
+				"rangav.vscode-thunder-client"
 			],
 			"settings": {
 				"prettier.enable": false,
