@@ -24,7 +24,8 @@
 				"vivaxy.vscode-conventional-commits",
 				"42Crunch.vscode-openapi",
 				"rangav.vscode-thunder-client",
-				"kisstkondoros.vscode-codemetrics"
+				"kisstkondoros.vscode-codemetrics",
+				"DavidAnson.vscode-markdownlint"
 			],
 			"settings": {
 				"prettier.enable": false,
