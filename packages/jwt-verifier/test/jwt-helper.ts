@@ -1,14 +1,5 @@
 import jwt from 'jsonwebtoken'
 
-export function signValidToken (): string {
-  return signTokenSynchronously({
-    email: 'me@email.com',
-    email_verified: false,
-    name: 'John',
-    sub: 1
-  }, Date.now() + 60 * 60)
-}
-
 export function signInvalidToken (): string {
   return signTokenSynchronously({ user: 'joe' }, Date.now() + 60 * 60)
 }

@@ -75,6 +75,10 @@ export const jwtVerifierExpressMiddleware = (
 
           // Add user on request context
           context.set('user', jwtClaims)
+
+          // Add user on request express
+          // @ts-expect-error
+          req.user = jwtClaims
         } catch (error) {
           handleError(error)
 

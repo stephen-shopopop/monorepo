@@ -171,6 +171,14 @@ describe('Error style express middleware', () => {
 
     test('when using valid token with valid claim then should receive ok response', async () => {
       // Arrange
+      const user = {
+        email: 'me@email.com',
+        email_verified: false,
+        name: 'John',
+        sub: 1
+      }
+      const signValidToken = jwtHelper.signTokenSynchronously(user, Date.now() + 60 * 60)
+
       const jwtMiddleware = jwtVerifierExpressMiddleware({
         secret: jwtHelper.exampleSecret
       })
@@ -178,21 +186,24 @@ describe('Error style express middleware', () => {
       const client = await setupExpressServer((app) => {
         app.use(jwtMiddleware)
 
-        app.get('/', (_req, res) => {
-          res.send({})
+        app.get('/', (req: express.Request, res) => {
+          res.send(
+            // @ts-expect-error
+            req?.user ?? {}
+          )
         })
       })
 
       // Act
       const response = await client.get('/', {
         headers: {
-          Authorization: jwtHelper.signValidToken()
+          Authorization: signValidToken
         }
       })
 
       // Assert
       expect(response).toMatchObject({
-        data: {},
+        data: user,
         status: HTTPStatus.OK
       })
     })

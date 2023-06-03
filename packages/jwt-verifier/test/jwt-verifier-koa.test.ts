@@ -5,6 +5,7 @@ import Koa, { Context } from 'koa'
 import { AddressInfo } from 'net'
 import { jwtVerifierKoaMiddleware } from '../index'
 import * as jwtHelper from './jwt-helper'
+import { signTokenSynchronously } from './jwt-helper'
 
 let connection: Server | undefined
 
@@ -171,6 +172,14 @@ describe('Error style express middleware', () => {
 
     test('when using valid token with valid claim then should receive ok response', async () => {
       // Arrange
+      const user = {
+        email: 'me@email.com',
+        email_verified: false,
+        name: 'John',
+        sub: 1
+      }
+      const signValidToken = signTokenSynchronously(user, Date.now() + 60 * 60)
+
       const jwtMiddleware = jwtVerifierKoaMiddleware({
         secret: jwtHelper.exampleSecret
       })
@@ -179,20 +188,20 @@ describe('Error style express middleware', () => {
         app.use(jwtMiddleware)
 
         app.use(async (ctx: Context) => {
-          ctx.body = {}
+          ctx.body = ctx.state?.['user'] ?? {}
         })
       })
 
       // Act
       const response = await client.get('/', {
         headers: {
-          Authorization: jwtHelper.signValidToken()
+          Authorization: signValidToken
         }
       })
 
       // Assert
       expect(response).toMatchObject({
-        data: {},
+        data: user,
         status: HTTPStatus.OK
       })
     })

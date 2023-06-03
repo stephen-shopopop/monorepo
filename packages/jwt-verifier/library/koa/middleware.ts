@@ -62,6 +62,9 @@ export const jwtVerifierKoaMiddleware = (
 
             // Add user on context
             context.set('user', jwtClaims)
+
+            // Add user on koa context state
+            ctx.state['user'] = jwtClaims
           } catch (error) {
             handleError(error)
 
