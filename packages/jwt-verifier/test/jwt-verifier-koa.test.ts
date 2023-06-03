@@ -36,7 +36,7 @@ describe('Error style express middleware', () => {
     await stopWebServer()
   })
 
-  describe('JWT middleware express', () => {
+  describe('JWT middleware koa', () => {
     test('when missing header authorization then should receive unauthorized response', async () => {
       // Arrange
       const jwtMiddleware = jwtVerifierKoaMiddleware({
