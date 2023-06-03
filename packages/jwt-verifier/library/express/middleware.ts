@@ -20,13 +20,12 @@ export const jwtVerifierExpressMiddleware = (
     const authenticationHeader = req.headers.authorization ?? req.headers['Authorization']
 
     if (authenticationHeader === undefined || Array.isArray(authenticationHeader)) {
-      handleError(
-        new AppError('JWT - missing header authorization', HTTPStatus.Unauthorized)
-      )
+      const error = new AppError('JWT - missing header authorization', HTTPStatus.Unauthorized)
+      handleError(error)
 
       res
-        .status(HTTPStatus.Unauthorized)
-        .json(errorStyleHttpResponse(HTTPStatus.Unauthorized))
+        .status(error.HttpStatus)
+        .json(errorStyleHttpResponse(error.HttpStatus))
         .end()
 
       return
@@ -38,13 +37,12 @@ export const jwtVerifierExpressMiddleware = (
     const authHeaderParts = authenticationHeader.trim().split(' ')
 
     if (authHeaderParts.length > 2) {
-      handleError(
-        new AppError('JWT - the incoming token has unknown structure', HTTPStatus.Unauthorized)
-      )
+      const error = new AppError('JWT - the incoming token has unknown structure', HTTPStatus.Unauthorized)
+      handleError(error)
 
       res
-        .status(HTTPStatus.Unauthorized)
-        .json(errorStyleHttpResponse(HTTPStatus.Unauthorized))
+        .status(error.HttpStatus)
+        .json(errorStyleHttpResponse(error.HttpStatus))
         .end()
 
       return
@@ -61,13 +59,12 @@ export const jwtVerifierExpressMiddleware = (
       options.secret,
       (err: VerifyErrors | null, jwtContent: any) => {
         if (err !== null) {
-          handleError(
-            new AppError('JWT - verifier', HTTPStatus.Unauthorized, true, err)
-          )
+          const error = new AppError('JWT - verifier', HTTPStatus.Unauthorized, true, err)
+          handleError(error)
 
           res
-            .status(HTTPStatus.Unauthorized)
-            .json(errorStyleHttpResponse(HTTPStatus.Unauthorized))
+            .status(error.HttpStatus)
+            .json(errorStyleHttpResponse(error.HttpStatus))
             .end()
 
           return
@@ -82,8 +79,8 @@ export const jwtVerifierExpressMiddleware = (
           handleError(error)
 
           res
-            .status(HTTPStatus.Forbidden)
-            .json(errorStyleHttpResponse(HTTPStatus.Forbidden))
+            .status((error as AppError).HttpStatus)
+            .json(errorStyleHttpResponse((error as AppError).HttpStatus))
             .end()
 
           return

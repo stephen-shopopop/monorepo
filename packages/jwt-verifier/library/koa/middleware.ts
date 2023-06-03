@@ -22,11 +22,10 @@ export const jwtVerifierKoaMiddleware = (
       const authenticationHeader = ctx.request.get('authorization')
 
       if (authenticationHeader === '') {
-        handleError(
-          new AppError('JWT - missing header authorization', HTTPStatus.Unauthorized)
-        )
+        const error = new AppError('JWT - missing header authorization', HTTPStatus.Unauthorized)
+        handleError(error)
 
-        ctx.throw(HTTPStatus.Unauthorized)
+        ctx.throw(error.HttpStatus)
       }
 
       let token: string
@@ -35,11 +34,10 @@ export const jwtVerifierKoaMiddleware = (
       const authHeaderParts = authenticationHeader.trim().split(' ')
 
       if (authHeaderParts.length > 2) {
-        handleError(
-          new AppError('JWT - the incoming token has unknown structure', HTTPStatus.Unauthorized)
-        )
+        const error = new AppError('JWT - the incoming token has unknown structure', HTTPStatus.Unauthorized)
+        handleError(error)
 
-        ctx.throw(HTTPStatus.Unauthorized)
+        ctx.throw(error.HttpStatus)
       }
 
       if (authHeaderParts.length === 2) {
@@ -53,11 +51,10 @@ export const jwtVerifierKoaMiddleware = (
         options.secret,
         (err: VerifyErrors | null, jwtContent: any) => {
           if (err !== null) {
-            handleError(
-              new AppError('JWT - verifier', HTTPStatus.Unauthorized, true, err)
-            )
+            const error = new AppError('JWT - verifier', HTTPStatus.Unauthorized, true, err)
+            handleError(error)
 
-            ctx.throw(HTTPStatus.Unauthorized)
+            ctx.throw(error.HttpStatus)
           }
 
           try {
@@ -68,7 +65,7 @@ export const jwtVerifierKoaMiddleware = (
           } catch (error) {
             handleError(error)
 
-            ctx.throw(HTTPStatus.Forbidden)
+            ctx.throw((error as AppError).HttpStatus)
           }
         }
       )
