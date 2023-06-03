@@ -1,53 +1,88 @@
-import { AppError } from '@stephen-shopopop/errorhandler'
+import { AppError, handleError } from '@stephen-shopopop/errorhandler'
+import { HTTPStatus } from '@stephen-shopopop/http-status'
 import { context } from '@stephen-shopopop/request-context'
 import jwt, { VerifyErrors } from 'jsonwebtoken'
 import type { Context, Next } from 'koa'
-import { userClaimsJwtVerifier } from '../commons'
+import { errorStyleHttpResponse, userClaimsJwtVerifier } from '../commons'
 import { JWTOptions } from '../definitions'
+
+enum KoaError {
+  ForbiddenError = 'ForbiddenError',
+  UnauthorizedError = 'UnauthorizedError'
+}
 
 /**
  * This is an koa middleware
  */
-export const jwtVerifierEKoaMiddleware = async (
+export const jwtVerifierKoaMiddleware = (
   options: JWTOptions
-): Promise<(ctx: Context, next: Next) => Promise<void>> => {
+): (ctx: Context, next: Next) => Promise<void> => {
   return async function jwtMiddleware (ctx: Context, next: Next): Promise<void> {
-    const authenticationHeader = ctx.request.get('authorization')
+    try {
+      const authenticationHeader = ctx.request.get('authorization')
 
-    if (authenticationHeader === '') {
-      throw new AppError('JWT - missing header authorization', 401)
-    }
+      if (authenticationHeader === '') {
+        handleError(
+          new AppError('JWT - missing header authorization', HTTPStatus.Unauthorized)
+        )
 
-    let token: string
-
-    // A token comes in one of two forms: 'token' or 'Bearer token'
-    const authHeaderParts = authenticationHeader.trim().split(' ')
-
-    if (authHeaderParts.length > 2) {
-      throw new AppError('JWT - the incoming token has unknown structure', 401)
-    }
-
-    if (authHeaderParts.length === 2) {
-      [, token = ''] = authHeaderParts
-    } else {
-      token = authenticationHeader
-    }
-
-    jwt.verify(
-      token,
-      options.secret,
-      (err: VerifyErrors | null, jwtContent: any) => {
-        if (err !== null) {
-          throw new AppError('JWT - verify error', 401, true, err)
-        }
-
-        const jwtClaims = userClaimsJwtVerifier(jwtContent.data)
-
-        // Add user on context
-        context.set('user', jwtClaims)
+        ctx.throw(HTTPStatus.Unauthorized)
       }
-    )
 
-    await next()
+      let token: string
+
+      // A token comes in one of two forms: 'token' or 'Bearer token'
+      const authHeaderParts = authenticationHeader.trim().split(' ')
+
+      if (authHeaderParts.length > 2) {
+        handleError(
+          new AppError('JWT - the incoming token has unknown structure', HTTPStatus.Unauthorized)
+        )
+
+        ctx.throw(HTTPStatus.Unauthorized)
+      }
+
+      if (authHeaderParts.length === 2) {
+        [, token = ''] = authHeaderParts
+      } else {
+        token = authenticationHeader
+      }
+
+      jwt.verify(
+        token,
+        options.secret,
+        (err: VerifyErrors | null, jwtContent: any) => {
+          if (err !== null) {
+            handleError(
+              new AppError('JWT - verifier', HTTPStatus.Unauthorized, true, err)
+            )
+
+            ctx.throw(HTTPStatus.Unauthorized)
+          }
+
+          try {
+            const jwtClaims = userClaimsJwtVerifier(jwtContent.data)
+
+            // Add user on context
+            context.set('user', jwtClaims)
+          } catch (error) {
+            handleError(error)
+
+            ctx.throw(HTTPStatus.Forbidden)
+          }
+        }
+      )
+
+      await next()
+    } catch (error) {
+      if (error instanceof Error && error.name in KoaError) {
+        const status = error.name === KoaError.ForbiddenError
+          ? HTTPStatus.Forbidden
+          : HTTPStatus.Unauthorized
+
+        ctx.body = errorStyleHttpResponse(status)
+        ctx.status = status
+      }
+    }
   }
 }

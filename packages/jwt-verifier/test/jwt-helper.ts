@@ -1,25 +1,35 @@
 import jwt from 'jsonwebtoken'
 
 export function signValidToken (): string {
-  return signTokenSynchronously('joe', ['admin'], Date.now() + 60 * 60)
+  return signTokenSynchronously({
+    email: 'me@email.com',
+    email_verified: false,
+    name: 'John',
+    sub: 1
+  }, Date.now() + 60 * 60)
+}
+
+export function signInvalidToken (): string {
+  return signTokenSynchronously({ user: 'joe' }, Date.now() + 60 * 60)
 }
 
 export function signExpiredToken (): string {
-  return signTokenSynchronously('joe', ['admin'], 0)
+  return signTokenSynchronously({
+    email: 'me@email.com',
+    email_verified: false,
+    name: 'John',
+    sub: 1
+  }, 0)
 }
 
 export function signTokenSynchronously (
-  user: string,
-  roles: string[],
+  user: Record<string, unknown>,
   expirationInUnixTime: number
 ): string {
   const token = jwt.sign(
     {
       exp: expirationInUnixTime,
-      data: {
-        user,
-        roles
-      }
+      data: user
     },
     exampleSecret
   )
