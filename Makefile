@@ -19,6 +19,7 @@ run:
 
 install: ## Install node version
 	@. $(NVM_DIR)/nvm.sh && nvm install $(NODE)
+	@make run CMD="npm i @antfu/ni -g --force"
 	@make run CMD="npm install"
 
 git-hooks: ## Install git hooks

@@ -7,6 +7,18 @@
     "aaron-bond.better-comments",
     "nicoespeon.abracadabra",
     "ckolkman.vscode-postgres",
-    "vivaxy.vscode-conventional-commits"
+    "vivaxy.vscode-conventional-commits",
+    "idered.npm",
+    "rangav.vscode-thunder-client",
+    "kisstkondoros.vscode-codemetrics",
+    "mikestead.dotenv",
+    "42Crunch.vscode-openapi",
+    "mutantdino.resourcemonitor",
+    "github.vscode-pull-request-github",
+    "ms-vscode-remote.remote-containers",
+    "DavidAnson.vscode-markdownlint",
+		"ms-azuretools.vscode-docker",
+    "janisdd.vscode-edit-csv",
+		"yzhang.markdown-all-in-one",
   ]
 }

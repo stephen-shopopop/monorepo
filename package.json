@@ -14,10 +14,10 @@
   ],
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/stephen-shopopop/logger.git"
+    "url": "git+https://github.com/stephen-shopopop/monorepo.git"
   },
   "bugs": {
-    "url": "https://github.com/stephen-shopopop/logger/issues"
+    "url": "https://github.com/stephen-shopopop/monorepo/issues"
   },
   "contributors": [
     "stephen.deletang@shopopop.com"
@@ -38,7 +38,10 @@
     "maintenance": "find . -name 'node_modules' -type d -prune -exec rm -rf '{}' +"
   },
   "keywords": [
-    "logger"
+    "logger",
+    "jwt",
+    "validator",
+    "error"
   ],
   "author": "tech-shopopop <tech@shopopop.com>",
   "license": "ISC",
