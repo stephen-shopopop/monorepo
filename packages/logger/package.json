@@ -5,7 +5,11 @@
   "main": "dist/index.js",
   "scripts": {
     "example": "PRETTY_PRINT=true ts-node example/index.ts",
-    "build": "rm -rf dist/* && tsc -p tsconfig.pkg.json"
+    "build": "rm -rf dist/* && tsc -p tsconfig.pkg.json",
+    "prepack": "npm run build"
+  },
+  "publishConfig": {
+    "access": "public"
   },
   "keywords": [],
   "author": "",
