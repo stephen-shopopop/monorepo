@@ -11,7 +11,7 @@
   "license": "ISC",
   "types": "dist/index.d.ts",
   "dependencies": {
-    "@stephen-shopopop/logger-poo": "*",
+    "@stephen-shopopop/logger": "*",
     "@stephen-shopopop/request-context": "*",
     "@stephen-shopopop/http-status": "*",
     "http-terminator": "^3.2.0"

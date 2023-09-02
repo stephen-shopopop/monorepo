@@ -8,7 +8,7 @@ import { defineErrorHandlingKoaMiddleware } from '../library/error-handling/koa/
 
 let connection: Server | undefined
 
-async function setupKoaServer (setupRoutes: (app: Koa) => void): Promise<AxiosInstance> {
+function setupKoaServer (setupRoutes: (app: Koa) => void): AxiosInstance {
   const app = new Koa()
 
   setupRoutes(app)
@@ -38,7 +38,7 @@ describe('Error handling koa middleware', () => {
 
   test('when sending a request then nothing to add', async () => {
     // Arrange
-    const client = await setupKoaServer((app) => {
+    const client = setupKoaServer((app) => {
       app.use(defineErrorHandlingKoaMiddleware)
 
       app.use(async (ctx: Context) => {
@@ -58,7 +58,7 @@ describe('Error handling koa middleware', () => {
 
   test('when sending request on route throw an Error then response json with status 500', async () => {
     // Arrange
-    const client = await setupKoaServer((app) => {
+    const client = setupKoaServer((app) => {
       app.use(defineErrorHandlingKoaMiddleware)
 
       app.use(async (_ctx: Context) => {
@@ -87,7 +87,7 @@ describe('Error handling koa middleware', () => {
       name: 'name is required'
     }
 
-    const client = await setupKoaServer((app) => {
+    const client = setupKoaServer((app) => {
       app.use(defineErrorHandlingKoaMiddleware)
 
       app.use(async (_ctx: Context) => {
@@ -115,7 +115,7 @@ describe('Error handling koa middleware', () => {
     // Arrange
     const details = new Error('Oups')
 
-    const client = await setupKoaServer((app) => {
+    const client = setupKoaServer((app) => {
       app.use(defineErrorHandlingKoaMiddleware)
 
       app.use(async (_ctx: Context) => {
@@ -143,7 +143,7 @@ describe('Error handling koa middleware', () => {
     // Arrange
     const details = ['summary']
 
-    const client = await setupKoaServer((app) => {
+    const client = setupKoaServer((app) => {
       app.use(defineErrorHandlingKoaMiddleware)
 
       app.use(async (_ctx: Context) => {

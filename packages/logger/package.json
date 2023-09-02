@@ -1,5 +1,5 @@
 {
-  "name": "@stephen-shopopop/logger-poo",
+  "name": "@stephen-shopopop/logger",
   "version": "2.0.0",
   "description": "",
   "main": "dist/index.js",

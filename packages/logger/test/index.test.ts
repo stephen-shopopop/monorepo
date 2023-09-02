@@ -12,7 +12,7 @@ afterEach(() => {
 })
 
 describe('logger', () => {
-  test('When no explicit configuration is set, info logs are written', async () => {
+  test('When no explicit configuration is set, info logs are written', () => {
     // Arrange
     const stdoutStub = sinon.stub(process.stdout, 'write')
 
@@ -27,7 +27,7 @@ describe('logger', () => {
     expect(lastStdoutCall).toMatchObject({ msg: 'I am a info' })
   })
 
-  test('When no explicit configuration is set, info logs with object are written', async () => {
+  test('When no explicit configuration is set, info logs with object are written', () => {
     // Arrange
     const stdoutStub = sinon.stub(process.stdout, 'write')
 
@@ -42,7 +42,7 @@ describe('logger', () => {
     expect(lastStdoutCall).toMatchObject({ surname: 'rob' })
   })
 
-  test('When log level is DEBUG and logger emits INFO statement, info logs are written', async () => {
+  test('When log level is DEBUG and logger emits INFO statement, info logs are written', () => {
     // Arrange
     logger.configureLogger({ level: 'debug' }, true)
     const stdoutStub = sinon.stub(process.stdout, 'write')
@@ -58,7 +58,7 @@ describe('logger', () => {
     expect(lastStdoutCall).toMatchObject({ msg: 'I am a info' })
   })
 
-  test('When logger is configured and then re-configured, then the new config applies', async () => {
+  test('When logger is configured and then re-configured, then the new config applies', () => {
     // Arrange
     logger.configureLogger({ level: 'info' }, true)
     logger.configureLogger({ level: 'debug' }, true)
@@ -75,7 +75,7 @@ describe('logger', () => {
     expect(lastStdoutCall).toMatchObject({ msg: 'I am a debug' })
   })
 
-  test('When log level is ERROR and logger emits INFO statement, then nothing is written', async () => {
+  test('When log level is ERROR and logger emits INFO statement, then nothing is written', () => {
     // Arrange
     logger.configureLogger({ level: 'error' }, true)
     const stdoutStub = sinon.stub(process.stdout, 'write')
@@ -87,7 +87,7 @@ describe('logger', () => {
     expect(stdoutStub.callCount).toBe(0)
   })
 
-  test('When configuring for pretty-print, then its written to stdout', async () => {
+  test('When configuring for pretty-print, then its written to stdout', () => {
     // Arrange
     logger.configureLogger({ level: 'info', prettyPrint: false }, true)
     const stdoutStub = sinon.stub(process.stdout, 'write')
@@ -101,7 +101,7 @@ describe('logger', () => {
     })
   })
 
-  test('it should print the passed metadata', async () => {
+  test('it should print the passed metadata', () => {
     // Arrange
     const stdoutStub = sinon.stub(process.stdout, 'write')
     logger.configureLogger({ level: 'info' }, true)
@@ -119,7 +119,7 @@ describe('logger', () => {
     })
   })
 
-  test('it should print the passed metadata with redact configuration', async () => {
+  test('it should print the passed metadata with redact configuration', () => {
     // Arrange
     const stdoutStub = sinon.stub(process.stdout, 'write')
     logger.configureLogger({ level: 'info', redact: ['mysecret'] }, true)

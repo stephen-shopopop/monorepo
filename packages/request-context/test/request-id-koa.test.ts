@@ -7,7 +7,7 @@ import { REQUEST_ID_HEADER } from '../library/request-id/commons'
 
 let connection: Server | undefined
 
-async function setupKoaServer (setupRoutes: (app: Koa) => void): Promise<AxiosInstance> {
+function setupKoaServer (setupRoutes: (app: Koa) => void): AxiosInstance {
   const app = new Koa()
 
   setupRoutes(app)
@@ -40,7 +40,7 @@ describe('Request ID koa middleware', () => {
       // Arrange
       const requestId = 'ab1d9251-5916-4b26-85d9-7a33aaa86c9d'
 
-      const client = await setupKoaServer((app) => {
+      const client = setupKoaServer((app) => {
         app.use(addRequestIdKoaMiddleware)
 
         app.use(async (ctx: Context) => {
@@ -69,7 +69,7 @@ describe('Request ID koa middleware', () => {
   describe('when the request id not existing on request header', () => {
     test('when sending without request id then generate and add on response header', async () => {
       // Arrange
-      const client = await setupKoaServer((app) => {
+      const client = setupKoaServer((app) => {
         app.use(addRequestIdKoaMiddleware)
 
         app.use(async (ctx: Context) => {
@@ -97,7 +97,7 @@ describe('Request ID koa middleware', () => {
       userId: 1
     }
 
-    const client = await setupKoaServer((app) => {
+    const client = setupKoaServer((app) => {
       app.use(async (_ctx, next: Next) => {
         await context.runAsync({ ...existingContextData }, async () => {
           return await next()

@@ -1,5 +1,5 @@
 import { HTTPStatus } from '@stephen-shopopop/http-status'
-import { logger } from '@stephen-shopopop/logger-poo'
+import { logger } from '@stephen-shopopop/logger'
 import { HttpTerminator, createHttpTerminator } from 'http-terminator'
 import diagnostics_channel from 'node:diagnostics_channel'
 import type { Server as HttpServer } from 'node:http'

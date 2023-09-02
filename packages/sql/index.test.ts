@@ -5,34 +5,34 @@ describe('[unit] fn sql()', () => {
   test('when query then return query formatted', () => {
     // Act
     const query = sql`SELECT * 
-    FROM Users`
+    FROM users`
 
     // Assert
-    expect(query).toEqual('SELECT * FROM Users')
+    expect(query).toEqual('SELECT * FROM users')
   })
 
   test('when query with subquery then return query formatted', () => {
     // Act
     const query = sql`
     SELECT * 
-    FROM Users
-    ${sql`LEFT JOIN metadata ON metadata.id = Users.metadata_id`}
+    FROM users
+    ${sql`LEFT JOIN metadata ON metadata.id = users.metadata_id`}
     `
 
     // Assert
-    expect(query).toEqual('SELECT * FROM Users LEFT JOIN metadata ON metadata.id = Users.metadata_id')
+    expect(query).toEqual('SELECT * FROM users LEFT JOIN metadata ON metadata.id = users.metadata_id')
   })
 
   test('when query with multuple subquery then return query formatted', () => {
     // Act
     const query = sql`
     SELECT * 
-    FROM Users
-    ${sql`WHERE Users.id`} ${4}
-    AND Users.done = ${true}
+    FROM users
+    ${sql`WHERE users.id`} = ${4}
+    AND users.done = ${true}
     `
 
     // Assert
-    expect(query).toEqual('SELECT * FROM Users WHERE Users.id 4 AND Users.done = true')
+    expect(query).toEqual('SELECT * FROM users WHERE users.id = 4 AND users.done = true')
   })
 })

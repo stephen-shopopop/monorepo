@@ -8,7 +8,7 @@ import * as jwtHelper from './jwt-helper'
 
 let connection: Server | undefined
 
-async function setupExpressServer (setupRoutes: (app: Express) => void): Promise<AxiosInstance> {
+function setupExpressServer (setupRoutes: (app: Express) => void): AxiosInstance {
   const app = express()
 
   setupRoutes(app)
@@ -43,7 +43,7 @@ describe('Error style express middleware', () => {
         secret: jwtHelper.exampleSecret
       })
 
-      const client = await setupExpressServer((app) => {
+      const client = setupExpressServer((app) => {
         app.use(jwtMiddleware)
 
         app.get('/', (_req, res) => {
@@ -73,7 +73,7 @@ describe('Error style express middleware', () => {
         secret: jwtHelper.exampleSecret
       })
 
-      const client = await setupExpressServer((app) => {
+      const client = setupExpressServer((app) => {
         app.use(jwtMiddleware)
 
         app.get('/', (_req, res) => {
@@ -107,7 +107,7 @@ describe('Error style express middleware', () => {
         secret: jwtHelper.exampleSecret
       })
 
-      const client = await setupExpressServer((app) => {
+      const client = setupExpressServer((app) => {
         app.use(jwtMiddleware)
 
         app.get('/', (_req, res) => {
@@ -141,7 +141,7 @@ describe('Error style express middleware', () => {
         secret: jwtHelper.exampleSecret
       })
 
-      const client = await setupExpressServer((app) => {
+      const client = setupExpressServer((app) => {
         app.use(jwtMiddleware)
 
         app.get('/', (_req, res) => {
@@ -183,7 +183,7 @@ describe('Error style express middleware', () => {
         secret: jwtHelper.exampleSecret
       })
 
-      const client = await setupExpressServer((app) => {
+      const client = setupExpressServer((app) => {
         app.use(jwtMiddleware)
 
         app.get('/', (req: express.Request, res) => {

@@ -9,7 +9,7 @@ import { signTokenSynchronously } from './jwt-helper'
 
 let connection: Server | undefined
 
-async function setupKoaServer (setupRoutes: (app: Koa) => void): Promise<AxiosInstance> {
+function setupKoaServer (setupRoutes: (app: Koa) => void): AxiosInstance {
   const app = new Koa()
 
   setupRoutes(app)
@@ -44,7 +44,7 @@ describe('Error style express middleware', () => {
         secret: jwtHelper.exampleSecret
       })
 
-      const client = await setupKoaServer((app) => {
+      const client = setupKoaServer((app) => {
         app.use(jwtMiddleware)
 
         app.use(async (ctx: Context) => {
@@ -74,7 +74,7 @@ describe('Error style express middleware', () => {
         secret: jwtHelper.exampleSecret
       })
 
-      const client = await setupKoaServer((app) => {
+      const client = setupKoaServer((app) => {
         app.use(jwtMiddleware)
 
         app.use(async (ctx: Context) => {
@@ -108,7 +108,7 @@ describe('Error style express middleware', () => {
         secret: jwtHelper.exampleSecret
       })
 
-      const client = await setupKoaServer((app) => {
+      const client = setupKoaServer((app) => {
         app.use(jwtMiddleware)
 
         app.use(async (ctx: Context) => {
@@ -142,7 +142,7 @@ describe('Error style express middleware', () => {
         secret: jwtHelper.exampleSecret
       })
 
-      const client = await setupKoaServer((app) => {
+      const client = setupKoaServer((app) => {
         app.use(jwtMiddleware)
 
         app.use(async (ctx: Context) => {
@@ -184,7 +184,7 @@ describe('Error style express middleware', () => {
         secret: jwtHelper.exampleSecret
       })
 
-      const client = await setupKoaServer((app) => {
+      const client = setupKoaServer((app) => {
         app.use(jwtMiddleware)
 
         app.use(async (ctx: Context) => {

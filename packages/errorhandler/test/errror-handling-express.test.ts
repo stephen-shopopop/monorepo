@@ -8,7 +8,7 @@ import { defineErrorStyleExpressMiddleware } from '../library/error-handling/exp
 
 let connection: Server | undefined
 
-async function setupExpressServer (setupRoutes: (app: Express) => void): Promise<AxiosInstance> {
+function setupExpressServer (setupRoutes: (app: Express) => void): AxiosInstance {
   const app = express()
 
   setupRoutes(app)
@@ -39,7 +39,7 @@ describe('Error style express middleware', () => {
   describe('when the route exists', () => {
     test('when sending a request then nothing to add', async () => {
       // Arrange
-      const client = await setupExpressServer((app) => {
+      const client = setupExpressServer((app) => {
         app.get('/', (_req, res) => {
           res.send({})
         })
@@ -59,7 +59,7 @@ describe('Error style express middleware', () => {
 
     test('when sending request on route throw an Error then response json with status 500', async () => {
       // Arrange
-      const client = await setupExpressServer((app) => {
+      const client = setupExpressServer((app) => {
         app.get('/', (_req, _res) => {
           throw new Error('I am an error')
         })
@@ -88,7 +88,7 @@ describe('Error style express middleware', () => {
         name: 'name is required'
       }
 
-      const client = await setupExpressServer((app) => {
+      const client = setupExpressServer((app) => {
         app.get('/', (_req, _res) => {
           throw new AppError('Fields required', 400, true, details)
         })
@@ -116,7 +116,7 @@ describe('Error style express middleware', () => {
       // Arrange
       const details = new Error('Oups')
 
-      const client = await setupExpressServer((app) => {
+      const client = setupExpressServer((app) => {
         app.get('/', (_req, _res) => {
           throw new AppError('Fields required', 400, true, details)
         })
@@ -144,7 +144,7 @@ describe('Error style express middleware', () => {
       // Arrange
       const details = ['summary']
 
-      const client = await setupExpressServer((app) => {
+      const client = setupExpressServer((app) => {
         app.get('/', (_req, _res) => {
           throw new AppError('Fields required', 400, true, details)
         })
@@ -172,7 +172,7 @@ describe('Error style express middleware', () => {
   describe('when the route no existing', () => {
     test('when sending a request then nothing to add', async () => {
       // Arrange
-      const client = await setupExpressServer((app) => {
+      const client = setupExpressServer((app) => {
         app.get('/', (_req, res) => {
           res.send({})
         })

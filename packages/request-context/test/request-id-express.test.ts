@@ -7,7 +7,7 @@ import { REQUEST_ID_HEADER } from '../library/request-id/commons'
 
 let connection: Server | undefined
 
-async function setupExpressServer (setupRoutes: (app: Express) => void): Promise<AxiosInstance> {
+function setupExpressServer (setupRoutes: (app: Express) => void): AxiosInstance {
   const app = express()
 
   setupRoutes(app)
@@ -40,7 +40,7 @@ describe('Request ID express middleware', () => {
       // Arrange
       const requestId = 'ab1d9251-5916-4b26-85d9-7a33aaa86c9d'
 
-      const client = await setupExpressServer((app) => {
+      const client = setupExpressServer((app) => {
         app.use(addRequestIdExpressMiddleware)
 
         app.get('/', (_req, res) => {
@@ -69,7 +69,7 @@ describe('Request ID express middleware', () => {
   describe('when the request id not existing on request header', () => {
     test('when sending without request id then generate and add on response header', async () => {
       // Arrange
-      const client = await setupExpressServer((app) => {
+      const client = setupExpressServer((app) => {
         app.use(addRequestIdExpressMiddleware)
 
         app.get('/', (_req, res) => {
@@ -96,7 +96,7 @@ describe('Request ID express middleware', () => {
     const existingContextData = {
       userId: 1
     }
-    const client = await setupExpressServer((app) => {
+    const client = setupExpressServer((app) => {
       app.use((_req, _res, next) => {
         // Init context on other middleware
         context.run({ ...existingContextData }, next)
