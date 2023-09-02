@@ -1,6 +1,6 @@
 {
   "name": "@stephen-shopopop/mysql-migrate",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Simple migration solution for mysql",
   "main": "index.js",
   "type": "module",
