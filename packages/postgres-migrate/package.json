@@ -1,0 +1,21 @@
+{
+  "name": "@stephen-shopopop/postgres-migrate",
+  "version": "1.0.0",
+  "description": "Simple migration solution for postgres",
+  "main": "index.js",
+  "type": "module",
+  "files": [
+    "/index.js"
+  ],
+  "scripts": {
+    "test": "node test/index.js"
+  },
+  "keywords": [
+    "postgres"
+  ],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "postgres": "^3.3.5"
+  }
+}
