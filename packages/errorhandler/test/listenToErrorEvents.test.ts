@@ -1,5 +1,5 @@
+import { logger } from '@stephen-shopopop/logger'
 import { Server } from 'http'
-import { logger } from 'packages/logger'
 import sinon from 'sinon'
 import { listenToErrorEvents } from '..'
 

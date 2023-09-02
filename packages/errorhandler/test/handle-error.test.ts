@@ -1,4 +1,4 @@
-import { logger } from 'packages/logger'
+import { logger } from '@stephen-shopopop/logger'
 import sinon from 'sinon'
 import { AppError, handleError } from '..'
 
