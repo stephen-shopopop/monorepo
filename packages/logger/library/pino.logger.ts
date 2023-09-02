@@ -1,11 +1,6 @@
 import { LoggerOptions, pino, Logger as PinoLoggerImpl } from 'pino'
 import type { LOG_LEVELS, Logger } from './types'
 
-// ✅ Use polymorphisme: on implemente l´interface Logger
-// ✅ Isolation partielle de la dependance (couplage sur les methodes de la dependance)
-// ✅ Typage strict de la configuration
-// ✅ Typage strict des methodes
-// ✅ Ajout d´une fonctionnalite pour les developpeurs: pino-pretty (interne à la dependance)
 export default class PinoLogger implements Logger {
   readonly #logger: PinoLoggerImpl
   readonly #emptyMessage: string = ''

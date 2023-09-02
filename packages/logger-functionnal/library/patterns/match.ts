@@ -1,4 +1,4 @@
-type Predicate<T> = (value: T) => Boolean
+type Predicate<T> = (value: T) => boolean
 
 type Function<T, Result> = (value: T) => Result
 
