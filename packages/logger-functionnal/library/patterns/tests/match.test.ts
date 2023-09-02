@@ -45,7 +45,7 @@ describe('[pattern/matching] match', () => {
   })
 
   test('When async curring match with execution return promise then return value', async () => {
-    const predicate = (word: string): Boolean => word.length > 0
+    const predicate = (word: string): boolean => word.length > 0
     const execution = async (word: string): Promise<string> => await Promise.resolve(String([word, 'ipsum']))
 
     const word = await match('lorem')(
