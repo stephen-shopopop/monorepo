@@ -1,4 +1,4 @@
-# @stephen-shopopop/logger-functionnal
+# @stephen-shopopop/jwt-verifier
 
 ## 2.0.0
 
@@ -9,10 +9,6 @@
 ### Patch Changes
 
 - Updated dependencies []:
+  - @stephen-shopopop/errorhandler@2.0.0
   - @stephen-shopopop/request-context@2.0.0
-
-## 1.1.0
-
-### Minor Changes
-
-- Add logger - PF
+  - @stephen-shopopop/validation@2.0.0
