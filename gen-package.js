@@ -105,7 +105,11 @@ describe('[${packageName}] hello()', () => {
   pkg.types = 'dist/index.d.ts'
   pkg.main = 'dist/index.js'
   pkg.scripts = {
-    build: 'rm -rf dist/* && tsc -p tsconfig.pkg.json'
+    build: 'rm -rf dist/* && tsc -p tsconfig.pkg.json',
+    prepack: 'npm run build'
+  }
+  publishConfig: {
+    access: 'public'
   }
   pkg.description = ''
 
