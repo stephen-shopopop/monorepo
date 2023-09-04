@@ -108,7 +108,7 @@ describe('[${packageName}] hello()', () => {
     build: 'rm -rf dist/* && tsc -p tsconfig.pkg.json',
     prepack: 'npm run build'
   }
-  publishConfig: {
+  pkg.publishConfig = {
     access: 'public'
   }
   pkg.description = ''
