@@ -10,5 +10,10 @@
   "editor.codeActionsOnSave": {
     "source.sortMembers": true,
     "source.sortImports": true
-  }
+  },
+  "conventionalCommits.scopes": [
+    "bundle",
+    "postgres",
+    "packages"
+  ]
 }
