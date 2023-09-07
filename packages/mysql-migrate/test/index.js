@@ -7,17 +7,17 @@ import migrate from '../index.js'
 const logger = new Console({ stdout: process.stdout, stderr: process.stderr })
 
 const {
-  MYSQL_ADDON_DB,
-  MYSQL_ADDON_PASSWORD,
-  MYSQL_ADDON_USER
+  MYSQL_DB,
+  MYSQL_PASSWORD,
+  MYSQL_USER
 } = process.env
 
 const sql = await mysql.createConnection({
   host: '127.0.0.1',
   port: 3306,
-  database: MYSQL_ADDON_DB,
-  password: MYSQL_ADDON_PASSWORD,
-  user: MYSQL_ADDON_USER
+  database: MYSQL_DB,
+  password: MYSQL_PASSWORD,
+  user: MYSQL_USER
 })
 
 migrate({

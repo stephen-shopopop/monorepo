@@ -7,12 +7,12 @@ import migrate from '../index.js'
 const logger = new Console({ stdout: process.stdout, stderr: process.stderr })
 
 const {
-  POSTGRESQL_ADDON_USER,
-  POSTGRESQL_ADDON_PASSWORD,
-  POSTGRESQL_ADDON_DB
+  POSTGRES_USER,
+  POSTGRES_PASSWORD,
+  POSTGRES_DB
 } = process.env
 
-const HOST = `postgresql://${POSTGRESQL_ADDON_USER}:${POSTGRESQL_ADDON_PASSWORD}@127.0.0.1:5432/${POSTGRESQL_ADDON_DB}`
+const HOST = `postgresql://${POSTGRES_USER}:${POSTGRES_PASSWORD}@127.0.0.1:5432/${POSTGRES_DB}`
 
 const sql = postgres(HOST, {
   idle_timeout: 1

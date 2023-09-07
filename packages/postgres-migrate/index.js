@@ -70,11 +70,13 @@ export default async function ({
 
   function ensureMigrationsTable () {
     return sql`
-      create table if not exists migrations (
+      select 'migrations'::regclass
+    `.catch(() => sql`
+      create table migrations (
         migration_id serial primary key,
         created_at timestamp with time zone not null default now(),
         name text
       )
-    `
+    `)
   }
 }
