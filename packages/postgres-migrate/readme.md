@@ -9,3 +9,18 @@
 ## Description
 
 postgres-migrate package
+
+## Types
+
+```shell
+npm i zod
+
+echo "NODE_ENV=production \
+  \nPGDATABASE=postgres \
+  \nPGHOST=localhost \
+  \nPGPASSWORD=postgres \
+  \nPGPORT=5432 \
+  \nPGUSER=postgres" >> .env
+
+env $(xargs < .env) npx pgzod --schema public --output ./models --strategy readwrite
+```
