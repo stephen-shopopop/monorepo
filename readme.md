@@ -6,7 +6,7 @@
 [![pages-build-deployment](https://github.com/stephen-shopopop/logger/actions/workflows/pages/pages-build-deployment/badge.svg)](https://github.com/stephen-shopopop/logger/actions/workflows/pages/pages-build-deployment)
 [![Tests](https://github.com/stephen-shopopop/logger/actions/workflows/test.yml/badge.svg)](https://github.com/stephen-shopopop/logger/actions/workflows/test.yml)
 
-<img align="left" width="300" alt="Monorepo toolbox for developpers" src="https://github.com/stephen-shopopop/monorepo/blob/487b71adb0bc81407c8b1f78cc05673bb6384b0b/IMG_0934.jpeg">
+<img align="left" width="440" height="180" alt="Monorepo toolbox for developpers" src="https://github.com/stephen-shopopop/monorepo/blob/487b71adb0bc81407c8b1f78cc05673bb6384b0b/IMG_0934.jpeg">
 
 - 🚀 Full-featured node
 - 🏷 Good practices
