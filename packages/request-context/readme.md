@@ -1,35 +1,26 @@
 [![Minimal node version](https://img.shields.io/static/v1?label=node&message=>=18.15.0&logo=node.js&color)](https://nodejs.org/about/releases/)
 [![Minimal npm version](https://img.shields.io/static/v1?label=npm&message=>=8.5.5&logo=npm&color)](https://github.com/npm/cli/releases)
-[![Linux](https://svgshare.com/i/Zhy.svg)](https://svgshare.com/i/Zhy.svg)
-[![macOS](https://svgshare.com/i/ZjP.svg)](https://svgshare.com/i/ZjP.svg)
 [![Visual Studio Code](https://img.shields.io/badge/--007ACC?logo=visual%20studio%20code&logoColor=ffffff)](https://code.visualstudio.com/)
 
-# Library request context
+# Package request context
+
+- 🚀 Full-featured node
+- 🏷 Middleware for [express](https://expressjs.com/fr/) & [koa](https://koajs.com)
+- 🏄‍♀️ Simple usage
+- 🖊️ Dynamic query support
+- 💬 Help on [github](https://github.com/stephen-shopopop)
 
 ## Description
 
-This class creates stores that stay coherent through asynchronous operations.
+This package creates stores that stay coherent through asynchronous operations.
 
-### context.run(initialContext: object, callback: Function) / context.runAsync(initialContext: object, callback: Promise<Function>)
+## Installation
 
-Start an asynchronous local storage context. Once this method is called, a new context is created, for which get and set calls will operate on a set of entities, unique to this context.
+```shell
+npm install @stephen-shopopop/request-context
+```
 
-- use context.run for express
-- use context.runAsync for Koa
-
-### context.set(key: string | number | Symbol, value: unknown)
-
-Sets a variable for a given key within running context. If this is called outside of a running context, it will not store the value.
-
-### context.get(key: string | number | Symbol) - return value: unknown
-
-Gets a variable previously set within a running context. If this is called outside of a running context, it will not retrieve the value.
-
-### context.getStore() - return Record<string | number | Symbol>, unknown>>
-
-Gets all variables previously set within a running context. If this is called outside of a running context, it will not retrieve the value.
-
-## Basic usage
+## Usage
 
 ### Express
 
@@ -99,6 +90,23 @@ http.createServer((req, res) => {
 }).listen(8080);
 ```
 
-## Contributing
+## Details
 
-1. npm run build - Build ts
+### context.run(initialContext: object, callback: Function) / context.runAsync(initialContext: object, callback: Promise<Function>)
+
+Start an asynchronous local storage context. Once this method is called, a new context is created, for which get and set calls will operate on a set of entities, unique to this context.
+
+- use context.run for express
+- use context.runAsync for Koa
+
+### context.set(key: string | number | Symbol, value: unknown)
+
+Sets a variable for a given key within running context. If this is called outside of a running context, it will not store the value.
+
+### context.get(key: string | number | Symbol) - return value: unknown
+
+Gets a variable previously set within a running context. If this is called outside of a running context, it will not retrieve the value.
+
+### context.getStore() - return Record<string | number | Symbol>, unknown>>
+
+Gets all variables previously set within a running context. If this is called outside of a running context, it will not retrieve the value.
