@@ -1,6 +1,6 @@
 {
   "name": "@stephen-shopopop/errorhandler",
-  "version": "2.0.0",
+  "version": "2.0.1",
   "description": "",
   "main": "dist/index.js",
   "repository": {
@@ -20,7 +20,9 @@
   "publishConfig": {
     "access": "public"
   },
-  "keywords": ["errors"],
+  "keywords": [
+    "errors"
+  ],
   "author": "",
   "license": "ISC",
   "types": "dist/index.d.ts",
