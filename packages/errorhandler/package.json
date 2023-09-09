@@ -3,6 +3,16 @@
   "version": "2.0.0",
   "description": "",
   "main": "dist/index.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/stephen-shopopop/monorepo.git"
+  },
+  "bugs": {
+    "url": "https://github.com/stephen-shopopop/monorepo/issues"
+  },
+  "contributors": [
+    "stephen.deletang@shopopop.com"
+  ],
   "scripts": {
     "build": "rm -rf dist/* && tsc -p tsconfig.pkg.json",
     "prepack": "npm run build"
@@ -10,14 +20,14 @@
   "publishConfig": {
     "access": "public"
   },
-  "keywords": [],
+  "keywords": ["errors"],
   "author": "",
   "license": "ISC",
   "types": "dist/index.d.ts",
   "dependencies": {
-    "@stephen-shopopop/http-status": "*",
-    "@stephen-shopopop/logger": "*",
-    "@stephen-shopopop/request-context": "*",
+    "@stephen-shopopop/http-status": "^2.0.1",
+    "@stephen-shopopop/logger": "^3.1.0",
+    "@stephen-shopopop/request-context": "^2.1.0",
     "http-terminator": "^3.2.0"
   },
   "devDependencies": {
