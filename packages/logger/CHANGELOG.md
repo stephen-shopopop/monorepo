@@ -1,5 +1,11 @@
 # @stephen-shopopop/logger-poo
 
+## 3.1.0
+
+### Minor Changes
+
+- Prepare package
+
 ## 3.0.0
 
 ### Major Changes
