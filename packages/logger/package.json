@@ -3,6 +3,16 @@
   "version": "3.0.0",
   "description": "",
   "main": "dist/index.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/stephen-shopopop/monorepo.git"
+  },
+  "bugs": {
+    "url": "https://github.com/stephen-shopopop/monorepo/issues"
+  },
+  "contributors": [
+    "stephen.deletang@shopopop.com"
+  ],
   "scripts": {
     "example": "PRETTY_PRINT=true ts-node example/index.ts",
     "build": "rm -rf dist/* && tsc -p tsconfig.pkg.json",
@@ -16,7 +26,7 @@
   "license": "ISC",
   "types": "dist/index.d.ts",
   "dependencies": {
-    "@stephen-shopopop/request-context": "*",
+    "@stephen-shopopop/request-context": "^2.1.0",
     "pino": "^8.15.0",
     "pino-pretty": "^10.2.0"
   }
